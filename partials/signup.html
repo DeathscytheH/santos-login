@@ -1,9 +1,9 @@
 <div class="breadcrumbs" id="breadcrumbs">
     <ul class="breadcrumb">
         <li>
-            <a href="#">Home</a>
+            <a href="#">Inicio</a>
         </li>
-        <li class="active">SignUp</li>
+        <li class="active">Registro</li>
     </ul>
 </div>
 <div class="page-content">
@@ -14,7 +14,7 @@
                 <div class="widget-body">
                     <div class="widget-main">
                         <h4 class="header blue lighter bigger">
-                            Signup for AngularCode
+                            Registrate a la Zona de abonados
                         </h4>
                         <br/>
                         <form name="signupForm" class="form-horizontal" role="form">
@@ -23,7 +23,7 @@
                                 <div class="col-sm-7">
                                     <span class="block input-icon input-icon-right">
                                         <input type="text" class="form-control" placeholder="Email" name="email" ng-model="signup.email" focus/>
-                                        <span ng-show="signupForm.email.$error.email" class="help-inline">Email is not valid</span> 
+                                        <span ng-show="signupForm.email.$error.email" class="help-inline">El email no es valido</span> 
                                     </span>
                                 </div>
                             </div>
@@ -32,43 +32,43 @@
                                 <div class="col-sm-7">
                                     <span class="block input-icon input-icon-right">
                                 <input type="password" class="form-control" name = "password" placeholder="Password" ng-model="signup.password" required/>
-                                <small class="errorMessage" data-ng-show="signupForm.password.$dirty && signupForm.password.$invalid"> Enter Password.</small>
+                                <small class="errorMessage" data-ng-show="signupForm.password.$dirty && signupForm.password.$invalid"> Ingresa tu password</small>
                             </span>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-5 control-label no-padding-right" for="password2">Confirm Password</label>
+                                <label class="col-sm-5 control-label no-padding-right" for="password2">Confirma tu Password</label>
                                 <div class="col-sm-7">
                                     <span class="block input-icon input-icon-right">
-                                <input type="password" class="form-control" name="password2" placeholder="Password Again" ng-model="signup.password2" password-match="signup.password" required/>                                
-                                <small class="errorMessage" data-ng-show="signupForm.password2.$dirty && signupForm.password2.$error.required"> Enter password again.</small>
+                                <input type="password" class="form-control" name="password2" placeholder="Password otra vez" ng-model="signup.password2" password-match="signup.password" required/>                                
+                                <small class="errorMessage" data-ng-show="signupForm.password2.$dirty && signupForm.password2.$error.required"> Ingresa tu password otra vez.</small>
 
-                               <small class="errorMessage" data-ng-show="signupForm.password2.$dirty && signupForm.password2.$error.passwordNoMatch && !signupForm.password2.$error.required"> Password do not match.</small>
+                               <small class="errorMessage" data-ng-show="signupForm.password2.$dirty && signupForm.password2.$error.passwordNoMatch && !signupForm.password2.$error.required"> Los passwords no son iguales.</small>
 
                             </span>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-5 control-label no-padding-right" for="name">Name</label>
+                                <label class="col-sm-5 control-label no-padding-right" for="name">Nombre</label>
                                 <div class="col-sm-7">
                                     <span class="block input-icon input-icon-right">
-                                <input type="text" class="form-control" placeholder="Name" ng-model="signup.name" />
+                                <input type="text" class="form-control" placeholder="Nombre" ng-model="signup.name" />
                             </span>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-5 control-label no-padding-right" for="phone">Phone</label>
+                                <label class="col-sm-5 control-label no-padding-right" for="apellido_paterno">Apellido Paterno</label>
                                 <div class="col-sm-7">
                                     <span class="block input-icon input-icon-right">
-                                <input type="text" class="form-control" placeholder="Phone" name="phone" ng-model="signup.phone"/>
+                                <input type="text" class="form-control" placeholder="Apellido Paterno" name="apellido_paterno" ng-model="signup.apellido_paterno"/>
                             </span>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-5 control-label no-padding-right" for="address">Address</label>
+                                <label class="col-sm-5 control-label no-padding-right" for="apellido_materno">Apellido Materno</label>
                                 <div class="col-sm-7">
                                     <span class="block input-icon input-icon-right">
-                                <input type="text" class="form-control" placeholder="Address" ng-model="signup.address" />
+                                <input type="text" class="form-control" placeholder="Apellido Materno" ng-model="signup.apellido_materno" />
                             </span>
                                 </div>
                             </div>
@@ -76,13 +76,13 @@
                                 <span class="lbl col-sm-5"> </span>
                                 <div class="col-sm-7">
                                     <button type="submit" class="width-35 pull-right btn btn-sm btn-primary" ng-click="signUp(signup)" data-ng-disabled="signupForm.$invalid">
-                                        Sign Up
+                                        Registrate
                                     </button>
                                 </div>
                             </div>
                             </fieldset>
                             <span class="lbl col-sm-5"> </span>
-                            <div class="col-sm-7">Already have an account? <a href="#/login">SignIn</a>
+                            <div class="col-sm-7">¿Ya tienes una cuenta? <a href="#/login">Ingresa aquí!</a>
                             </div>
                         </form>
                     </div>

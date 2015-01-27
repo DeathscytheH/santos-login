@@ -2,9 +2,9 @@
 /**
  * Database configuration
  */
-define('DB_USERNAME', 'root');
-define('DB_PASSWORD', '');
+define('DB_USERNAME', 'santo_admin');
+define('DB_PASSWORD', 'g3m1n13lf');
 define('DB_HOST', 'localhost');
-define('DB_NAME', 'angularcode');
+define('DB_NAME', 'santos_abonados');
 
 ?>
