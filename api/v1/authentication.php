@@ -24,7 +24,7 @@ $app->post('/login', function() use ($app) {
         $response['name'] = $user['name'];
         $response['uid'] = $user['uid'];
         $response['email'] = $user['email'];
-        $response['createdAt'] = $user['created'];
+        $response['fecha_registro'] = $user['fecha_registro'];
         if (!isset($_SESSION)) {
             session_start();
         }
@@ -44,20 +44,19 @@ $app->post('/login', function() use ($app) {
 $app->post('/signUp', function() use ($app) {
     $response = array();
     $r = json_decode($app->request->getBody());
-    echo $r;
     verifyRequiredParams(array('email', 'name', 'password'),$r->customer);
     require_once 'passwordHash.php';
     $db = new DbHandler();
-    $phone = $r->customer->apellido_paterno;
+    $apellido_paterno = $r->customer->apellido_paterno;
     $name = $r->customer->name;
     $email = $r->customer->email;
-    $address = $r->customer->apellido_materno;
+    $apellido_materno = $r->customer->apellido_materno;
     $password = $r->customer->password;
     $isUserExists = $db->getOneRecord("select 1 from abonados_test where email='$email'");
     if(!$isUserExists){
         $r->customer->password = passwordHash::hash($password);
         $tabble_name = "abonados_test";
-        $column_names = array('phone', 'name', 'email', 'password', 'city', 'address');
+        $column_names = array('email', 'password', 'name', 'apellido_paterno', 'apellido_materno');
         $result = $db->insertIntoTable($r->customer, $column_names, $tabble_name);
         if ($result != NULL) {
             $response["status"] = "success";
@@ -67,7 +66,6 @@ $app->post('/signUp', function() use ($app) {
                 session_start();
             }
             $_SESSION['uid'] = $response["uid"];
-            $_SESSION['phone'] = $phone;
             $_SESSION['name'] = $name;
             $_SESSION['email'] = $email;
             echoResponse(200, $response);
