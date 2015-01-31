@@ -47,17 +47,19 @@ $app->post('/signUp', function() use ($app) {
     verifyRequiredParams(array('email', 'name', 'password'),$r->customer);
     require_once 'passwordHash.php';
     $db = new DbHandler();
-    $apellido_paterno = $r->customer->apellido_paterno;
+    $no_abonado = $r->customer->no_abonado;
     $name = $r->customer->name;
     $email = $r->customer->email;
-    $apellido_materno = $r->customer->apellido_materno;
     $password = $r->customer->password;
     $isUserExists = $db->getOneRecord("select 1 from abonados_test where email='$email'");
-    if(!$isUserExists){
+    $isNoAbonoExists =$db->getOneRecord("select 1 from superBoletos where ABONO like '%$no_abonado' and valido=0");
+    if(!$isUserExists and $isNoAbonoExists){
         $r->customer->password = passwordHash::hash($password);
         $tabble_name = "abonados_test";
-        $column_names = array('email', 'password', 'name', 'apellido_paterno', 'apellido_materno');
+        $column_names = array('email', 'password', 'name', 'no_abonado', 'apellido_paterno', 'apellido_materno');
         $result = $db->insertIntoTable($r->customer, $column_names, $tabble_name);
+        //Alterar el valido a 1
+        $cambiarValido = $db->updateValidar("update superBoletos set valido=1 where ABONO like '%$no_abonado' and valido=0");
         if ($result != NULL) {
             $response["status"] = "success";
             $response["message"] = "La cuenta fue creada correctamente";
@@ -73,10 +75,10 @@ $app->post('/signUp', function() use ($app) {
             $response["status"] = "error";
             $response["message"] = "Error al crear usuario. Por favor intentelo de nuevo";
             echoResponse(201, $response);
-        }            
+        }
     }else{
         $response["status"] = "error";
-        $response["message"] = "Un usuario ya esta registrado con ese correo!";
+        $response["message"] = "Un usuario ya esta registrado con ese correo! O el numero de abonado ya esta registrado!";
         echoResponse(201, $response);
     }
 });

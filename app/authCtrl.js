@@ -16,6 +16,7 @@ app.controller('authCtrl', function ($scope, $rootScope, $routeParams, $location
         email: '',
         password: '',
         name: '',
+        no_abonado:'',
         apellido_paterno: '',
         apellido_materno: ''
     };

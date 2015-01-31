@@ -17,6 +17,10 @@ class DbHandler {
         $r = $this->conn->query($query.' LIMIT 1') or die($this->conn->error.__LINE__);
         return $result = $r->fetch_assoc();    
     }
+    //actualizar un record
+    public function updateValidar($query){
+        $r = $this->conn->query($query) or die($this->conn->error.__LINE__);
+    }
     /**
      * Creating new record
      */
