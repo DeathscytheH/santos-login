@@ -17,7 +17,8 @@ app.controller('authCtrl', function ($scope, $rootScope, $routeParams, $location
         password: '',
         no_abonado:'',
         acepta_mailing: true,
-        acepta_terminos: false
+        acepta_terminos: false,
+        //activation: ''
         //Se agregaron acepta_mailing y acepta_terminos. Se movieron apellido_paterno, apellido_materno y name.
         
     };
@@ -27,7 +28,7 @@ app.controller('authCtrl', function ($scope, $rootScope, $routeParams, $location
         }).then(function (results) {
             Data.toast(results);
             if (results.status == "success") {
-                $location.path('dashboard');
+                $location.path('email_enviado');
             }
         });
     };
@@ -37,4 +38,13 @@ app.controller('authCtrl', function ($scope, $rootScope, $routeParams, $location
             $location.path('login');
         });
     }
+    //funcion para obtener parametros
+    $scope.activation = function (code) {
+        Data.get('activation', {
+            code: code
+        }).then(function (results) {
+            Data.toast(results);
+            $location.path('activation');
+        });
+    }    
 });

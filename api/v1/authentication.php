@@ -9,8 +9,16 @@ $app->get('/session', function() {
     echoResponse(200, $session);
 });
 
+$app->get('/activation', function(){
+    $db = new DbHandler();
+    
+    $response["status"] = "info";
+    $response["message"] = "Tu cuenta ha sido activada correctamente";
+    echoResponse(200, $response);    
+});
+
 $app->post('/login', function() use ($app) {
-    require_once 'passwordHash.php';
+    require_once 'passwordHash.php';      
     $r = json_decode($app->request->getBody());
     verifyRequiredParams(array('email', 'password'),$r->customer);
     $response = array();
@@ -45,7 +53,7 @@ $app->post('/login', function() use ($app) {
 $app->post('/signUp', function() use ($app) {
     $response = array();
     $r = json_decode($app->request->getBody());
-    verifyRequiredParams(array('email', 'password', 'acepta_mailing'),$r->customer);
+    verifyRequiredParams(array('email', 'password'),$r->customer);
     require_once 'passwordHash.php';
     $db = new DbHandler();
     $no_abonado = $r->customer->no_abonado;
@@ -56,25 +64,28 @@ $app->post('/signUp', function() use ($app) {
     $isNoAbonoExists =$db->getOneRecord("select 1 from superBoletos where ABONO like '%$no_abonado' and valido=0");
     if(!$isUserExists and $isNoAbonoExists){
         $r->customer->password = passwordHash::hash($password);
+        //$r->customer->activation = md5($email.time());
+        //$base_url='http://localhost/santos-login/#/';  
         $tabble_name = "abonados_test";
         //removidos name, apellido_paterno y apellido_materno
+        //Meter activation, 
         $column_names = array('email', 'password', 'no_abonado', 'acepta_mailing');
         $result = $db->insertIntoTable($r->customer, $column_names, $tabble_name);     
         if ($result != NULL) {
             //Alterar el valido a 1
             $cambiarValido = $db->updateValidar("update superBoletos set valido=1 where ABONO like '%$no_abonado' and valido=0");
-            /*
-            **Agregar a la tabla no_de abonado
             
-            $tabble_name1 = "no_abonos_test";
-            $column_names1 = array('email', 'no_abonado');
-            $result1 = $db->insertIntoTable($r->customer, $column_names, $tabble_name);               
-            */
-            //Agregar datos restantes a no_abonos
-            //$updateAbono = $db->updateValidar();
-            //
+            //Inicia enviar correo
+            /*
+            include 'smtp/Send_Mail.php';
+            $to=$email;
+            $subject="Verificacion de correo";
+            $body='Hola, <br/> <br/> Necesitamos asegurarnos que eres humano. Por favor verifica tu correo para que puedas utilizar tu cuenta. <br/> <br/> <a href="'.$base_url.'activation/'.$activation.'">'.$base_url.'activation/'.$activation.'</a>';
+            Send_Mail($to,$subject,$body);           
+            //*/
+            
             $response["status"] = "success";
-            $response["message"] = "La cuenta fue creada correctamente";
+            $response["message"] = "La cuenta fue creada correctamente. Por favor activa tu correo.";
             $response["uid"] = $result;
             if (!isset($_SESSION)) {
                 session_start();

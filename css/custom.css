@@ -2,7 +2,10 @@ body{
 	padding-top: 51px;
     background-image: url("../img/santos-bg1.jpg");
     background-color: #ffffff;  
-    background-size: 100% auto;
+    /*background-size: 100% auto;*/
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;    
 }
 
 /* ng-cloak */

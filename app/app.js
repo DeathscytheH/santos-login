@@ -29,6 +29,18 @@ app.config(['$routeProvider',
                 controller: 'authCtrl',
                 role: '0'
             })
+            .when('/activation', {
+                title: 'Activacion',
+                templateUrl: 'partials/activation.html',
+                //controller: 'authCtrl',
+                //role: '0'
+            })
+            .when('/email_enviado', {
+                title: 'Email Enviado',
+                templateUrl: 'partials/email_enviado.html',
+                controller: 'authCtrl',
+                role: '0'
+            })        
             .otherwise({
                 redirectTo: '/login'
             });
