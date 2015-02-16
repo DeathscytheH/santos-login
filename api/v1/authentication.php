@@ -4,6 +4,7 @@ $app->get('/session', function() {
     $session = $db->getSession();
     $response["uid"] = $session['uid'];
     $response["email"] = $session['email'];
+    //Aqui tambien va la variable de la session
     $response["name"] = $session['name'];
     echoResponse(200, $session);
 });
@@ -44,11 +45,11 @@ $app->post('/login', function() use ($app) {
 $app->post('/signUp', function() use ($app) {
     $response = array();
     $r = json_decode($app->request->getBody());
-    verifyRequiredParams(array('email', 'name', 'password'),$r->customer);
+    verifyRequiredParams(array('email', 'password', 'acepta_mailing'),$r->customer);
     require_once 'passwordHash.php';
     $db = new DbHandler();
     $no_abonado = $r->customer->no_abonado;
-    $name = $r->customer->name;
+    //$name = $r->customer->name;
     $email = $r->customer->email;
     $password = $r->customer->password;
     $isUserExists = $db->getOneRecord("select 1 from abonados_test where email='$email'");
@@ -56,11 +57,22 @@ $app->post('/signUp', function() use ($app) {
     if(!$isUserExists and $isNoAbonoExists){
         $r->customer->password = passwordHash::hash($password);
         $tabble_name = "abonados_test";
-        $column_names = array('email', 'password', 'name', 'no_abonado', 'apellido_paterno', 'apellido_materno');
-        $result = $db->insertIntoTable($r->customer, $column_names, $tabble_name);
-        //Alterar el valido a 1
-        $cambiarValido = $db->updateValidar("update superBoletos set valido=1 where ABONO like '%$no_abonado' and valido=0");
+        //removidos name, apellido_paterno y apellido_materno
+        $column_names = array('email', 'password', 'no_abonado', 'acepta_mailing');
+        $result = $db->insertIntoTable($r->customer, $column_names, $tabble_name);     
         if ($result != NULL) {
+            //Alterar el valido a 1
+            $cambiarValido = $db->updateValidar("update superBoletos set valido=1 where ABONO like '%$no_abonado' and valido=0");
+            /*
+            **Agregar a la tabla no_de abonado
+            
+            $tabble_name1 = "no_abonos_test";
+            $column_names1 = array('email', 'no_abonado');
+            $result1 = $db->insertIntoTable($r->customer, $column_names, $tabble_name);               
+            */
+            //Agregar datos restantes a no_abonos
+            //$updateAbono = $db->updateValidar();
+            //
             $response["status"] = "success";
             $response["message"] = "La cuenta fue creada correctamente";
             $response["uid"] = $result;
@@ -68,7 +80,7 @@ $app->post('/signUp', function() use ($app) {
                 session_start();
             }
             $_SESSION['uid'] = $response["uid"];
-            $_SESSION['name'] = $name;
+            //$_SESSION['name'] = $name;
             $_SESSION['email'] = $email;
             echoResponse(200, $response);
         } else {

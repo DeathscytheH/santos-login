@@ -35,7 +35,7 @@
                                 <small class="errorMessage" data-ng-show="signupForm.password.$dirty && signupForm.password.$invalid"> Ingresa tu password</small>
                             </span>
                                 </div>
-                            </div>                                                        
+                            </div>
                             <div class="form-group">
                                 <label class="col-sm-5 control-label no-padding-right" for="password2">Confirma tu Password</label>
                                 <div class="col-sm-7">
@@ -56,7 +56,7 @@
                                 <small class="errorMessage" data-ng-show="signupForm.no_abonado.$dirty && signupForm.no_abonado.$invalid"> Ingresa los ultimos doce digitos de tu numero de abonado</small>
                             </span>
                                 </div>
-                            </div>                            
+                            </div>
                             <div class="form-group">
                                 <label class="col-sm-5 control-label no-padding-right" for="no_abonado2">Confirma tu numero de abonado</label>
                                 <div class="col-sm-7">
@@ -68,35 +68,30 @@
 
                             </span>
                                 </div>
-                            </div>                            
+                            </div>
                             <div class="form-group">
-                                <label class="col-sm-5 control-label no-padding-right" for="name">Nombre</label>
+                               <label class="col-sm-5 control-label no-padding-right" for="terminos"></label>
                                 <div class="col-sm-7">
                                     <span class="block input-icon input-icon-right">
-                                <input type="text" class="form-control" placeholder="Nombre" ng-model="signup.name" />
-                            </span>
+                                        <input type="checkbox" class="" placeholder="Terminos" name="terminos" ng-model="signup.acepta_terminos"/> Estoy de acuerdo con los <a href="#">Terminos y Condiciones</a> y <a href="#"> Las politicas de privacidad</a>
+                                        
+                                    </span>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-5 control-label no-padding-right" for="apellido_paterno">Apellido Paterno</label>
+                               <label class="col-sm-5 control-label no-padding-right" for="terminos"></label>
                                 <div class="col-sm-7">
                                     <span class="block input-icon input-icon-right">
-                                <input type="text" class="form-control" placeholder="Apellido Paterno" name="apellido_paterno" ng-model="signup.apellido_paterno"/>
-                            </span>
+                                        <input type="checkbox" class="" placeholder="Mailing" name="mailing" ng-model="signup.acepta_mailing" ng-init="signup.acepta_mailing=true"/> Inscribirme a la lista de correos para recibir promociones exclusivas de abonado.
+                                        
+                                    </span>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-5 control-label no-padding-right" for="apellido_materno">Apellido Materno</label>
-                                <div class="col-sm-7">
-                                    <span class="block input-icon input-icon-right">
-                                <input type="text" class="form-control" placeholder="Apellido Materno" ng-model="signup.apellido_materno" />
-                            </span>
-                                </div>
-                            </div>
+                            </div>                                                       
+
                             <div class="form-group">
                                 <span class="lbl col-sm-5"> </span>
                                 <div class="col-sm-7">
-                                    <button type="submit" class="width-35 pull-right btn btn-sm btn-primary" ng-click="signUp(signup)" data-ng-disabled="signupForm.$invalid">
+                                    <button type="submit" class="width-35 pull-right btn btn-sm btn-primary" ng-click="signUp(signup)" data-ng-disabled="signupForm.$invalid && !signup.acepta_terminos">
                                         Registrate
                                     </button>
                                 </div>

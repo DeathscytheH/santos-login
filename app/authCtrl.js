@@ -15,10 +15,11 @@ app.controller('authCtrl', function ($scope, $rootScope, $routeParams, $location
     $scope.signup = {
         email: '',
         password: '',
-        name: '',
         no_abonado:'',
-        apellido_paterno: '',
-        apellido_materno: ''
+        acepta_mailing: true,
+        acepta_terminos: false
+        //Se agregaron acepta_mailing y acepta_terminos. Se movieron apellido_paterno, apellido_materno y name.
+        
     };
     $scope.signUp = function (customer) {
         Data.post('signUp', {

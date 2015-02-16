@@ -56,8 +56,9 @@ public function getSession(){
     $sess = array();
     if(isset($_SESSION['uid']))
     {
+        //Aqui maneja la session del usuario
         $sess["uid"] = $_SESSION['uid'];
-        $sess["name"] = $_SESSION['name'];
+        //$sess["name"] = $_SESSION['name'];
         $sess["email"] = $_SESSION['email'];
     }
     else

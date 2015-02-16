@@ -1,5 +1,8 @@
 body{
 	padding-top: 51px;
+    background-image: url("../img/santos-bg1.jpg");
+    background-color: #ffffff;  
+    background-size: 100% auto;
 }
 
 /* ng-cloak */

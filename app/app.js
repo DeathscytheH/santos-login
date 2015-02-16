@@ -40,7 +40,7 @@ app.config(['$routeProvider',
                 if (results.uid) {
                     $rootScope.authenticated = true;
                     $rootScope.uid = results.uid;
-                    $rootScope.name = results.name;
+                    //$rootScope.name = results.name;
                     $rootScope.email = results.email;
                 } else {
                     var nextUrl = next.$$route.originalPath;
