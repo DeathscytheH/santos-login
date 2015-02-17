@@ -19,6 +19,27 @@
                         <br/>
                         <form name="signupForm" class="form-horizontal" role="form">
                             <div class="form-group">
+                                <label class="col-sm-5 control-label no-padding-right" for="no_abonado">Numero de Abonado</label>
+                                <div class="col-sm-7">
+                                    <span class="block input-icon input-icon-right">
+                                <input type="text" class="form-control" name = "no_abonado" placeholder="Ultimos 12 digitos" ng-model="signup.no_abonado" ng-maxlength="12" required/>
+                                <small class="errorMessage" data-ng-show="signupForm.no_abonado.$dirty && signupForm.no_abonado.$invalid"> Ingresa los ultimos doce digitos de tu numero de abonado</small>
+                            </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-5 control-label no-padding-right" for="no_abonado2">Confirma tu numero de abonado</label>
+                                <div class="col-sm-7">
+                                    <span class="block input-icon input-icon-right">
+                                <input type="text" class="form-control" name="no_abonado2" placeholder="Numero de abonado otra vez" ng-model="signup.no_abonado2" ng-maxlength="12" no_abonado-match="signup.no_abonado" required/>                                
+                                <small class="errorMessage" data-ng-show="signupForm.no_abonado2.$dirty && signupForm.no_abonado2.$error.required"> Ingresa tu numero de abonado otra vez.</small>
+
+                               <small class="errorMessage" data-ng-show="signupForm.no_abonado2.$dirty && signupForm.no_abonado2.$error.no_abonadoNoMatch && !signupForm.no_abonado2.$error.required"> Los numeros de abonado no son iguales.</small>
+
+                            </span>
+                                </div>
+                            </div>                           
+                            <div class="form-group">
                                 <label class="col-sm-5 control-label no-padding-right" for="email">Email</label>
                                 <div class="col-sm-7">
                                     <span class="block input-icon input-icon-right">
@@ -44,27 +65,6 @@
                                 <small class="errorMessage" data-ng-show="signupForm.password2.$dirty && signupForm.password2.$error.required"> Ingresa tu password otra vez.</small>
 
                                <small class="errorMessage" data-ng-show="signupForm.password2.$dirty && signupForm.password2.$error.passwordNoMatch && !signupForm.password2.$error.required"> Los passwords no son iguales.</small>
-
-                            </span>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-5 control-label no-padding-right" for="no_abonado">Numero de Abonado</label>
-                                <div class="col-sm-7">
-                                    <span class="block input-icon input-icon-right">
-                                <input type="text" class="form-control" name = "no_abonado" placeholder="Ultimos 12 digitos" ng-model="signup.no_abonado" ng-maxlength="12" required/>
-                                <small class="errorMessage" data-ng-show="signupForm.no_abonado.$dirty && signupForm.no_abonado.$invalid"> Ingresa los ultimos doce digitos de tu numero de abonado</small>
-                            </span>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-5 control-label no-padding-right" for="no_abonado2">Confirma tu numero de abonado</label>
-                                <div class="col-sm-7">
-                                    <span class="block input-icon input-icon-right">
-                                <input type="text" class="form-control" name="no_abonado2" placeholder="Numero de abonado otra vez" ng-model="signup.no_abonado2" ng-maxlength="12" no_abonado-match="signup.no_abonado" required/>                                
-                                <small class="errorMessage" data-ng-show="signupForm.no_abonado2.$dirty && signupForm.no_abonado2.$error.required"> Ingresa tu numero de abonado otra vez.</small>
-
-                               <small class="errorMessage" data-ng-show="signupForm.no_abonado2.$dirty && signupForm.no_abonado2.$error.no_abonadoNoMatch && !signupForm.no_abonado2.$error.required"> Los numeros de abonado no son iguales.</small>
 
                             </span>
                                 </div>
