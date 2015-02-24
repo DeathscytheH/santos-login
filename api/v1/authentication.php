@@ -6,6 +6,14 @@ $app->get('/session', function() {
     $response["email"] = $session['email'];
     //Aqui tambien va la variable de la session
     //$response["name"] = $session['name'];
+    $response['fecha_registro'] = $session['fecha_registro'];
+    $response['no_abonado'] = $session['no_abonado'];
+    //Variables de abonados
+    $response['paquete'] = $session['paquete'];
+    $response['zona'] = $session['zona'];
+    $response['seccion'] = $session['seccion'];
+    $response['fila'] = $session['fila'];
+    $response['asiento'] = $session['asiento']; 
     echoResponse(200, $session);
 });
 
@@ -17,21 +25,35 @@ $app->post('/login', function() use ($app) {
     $db = new DbHandler();
     $password = $r->customer->password;
     $email = $r->customer->email;
-    $user = $db->getOneRecord("select uid,name,password,email,fecha_registro from abonados_test where email='$email'");
+    //Eliminar name y otros porque no los requiero
+    $user = $db->getOneRecord("select uid,password,no_abonado,fecha_registro from abonados_test where email='$email'");
     if ($user != NULL) {
         if(passwordHash::check_password($user['password'],$password)){
         $response['status'] = "success";
         $response['message'] = 'Logueado con exito.';
-        $response['name'] = $user['name'];
+        //Comentar name
+        //$response['name'] = $user['name'];
         $response['uid'] = $user['uid'];
-        $response['email'] = $user['email'];
-        $response['fecha_registro'] = $user['fecha_registro'];
+        //$response['email'] = $user['email'];
+        //$response['fecha_registro'] = $user['fecha_registro'];
+        //$response['no_abonado'] = $user['no_abonado'];
         if (!isset($_SESSION)) {
             session_start();
         }
         $_SESSION['uid'] = $user['uid'];
         $_SESSION['email'] = $email;
-        $_SESSION['name'] = $user['name'];
+        //$_SESSION['name'] = $user['name'];
+        $_SESSION['no_abonado'] = $user['no_abonado'];
+        $_SESSION['fecha_registro'] = $user['fecha_registro'];
+        //agregar query para datos de abonado
+        $abono= $user['no_abonado'];
+        /**/
+        $abonos = $db->getOneRecord("select PAQUETE, ZONA, SECCION, FILA, ASIENTO FROM superBoletos where ABONO like '%$abono' and valido=1");
+        $_SESSION['paquete'] = $abonos['PAQUETE'];
+        $_SESSION['zona'] = $abonos['ZONA'];
+        $_SESSION['seccion'] = $abonos['SECCION'];
+        $_SESSION['fila'] = $abonos['FILA'];
+        $_SESSION['asiento'] = $abonos['ASIENTO'];
         } else {
             $response['status'] = "error";
             $response['message'] = 'Login Fallo. Error en los datos';

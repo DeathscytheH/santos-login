@@ -42,6 +42,14 @@ app.config(['$routeProvider',
                     $rootScope.uid = results.uid;
                     //$rootScope.name = results.name;
                     $rootScope.email = results.email;
+                    //Abonos registrados
+                    $rootScope.fecha_registro = results.fecha_registro;
+                    $rootScope.no_abonado = results.no_abonado;
+                    $rootScope.paquete = results.paquete;
+                    $rootScope.zona = results.zona;
+                    $rootScope.seccion = results.seccion;
+                    $rootScope.fila = results.fila;
+                    $rootScope.asiento = results.asiento;
                 } else {
                     var nextUrl = next.$$route.originalPath;
                     if (nextUrl == '/signup' || nextUrl == '/login') {

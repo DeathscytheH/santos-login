@@ -60,6 +60,15 @@ public function getSession(){
         $sess["uid"] = $_SESSION['uid'];
         //$sess["name"] = $_SESSION['name'];
         $sess["email"] = $_SESSION['email'];
+        //agregados
+        $sess['fecha_registro'] = $_SESSION['fecha_registro'];
+        $sess['no_abonado'] = $_SESSION['no_abonado'];
+        //Datos de abonos
+        $sess['paquete'] = $_SESSION['paquete'];
+        $sess['zona'] = $_SESSION['zona'];
+        $sess['seccion'] = $_SESSION['seccion'];
+        $sess['fila'] = $_SESSION['fila'];
+        $sess['asiento'] = $_SESSION['asiento'];
     }
     else
     {

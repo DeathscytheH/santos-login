@@ -1,8 +1,14 @@
+@font-face {
+    font-family: centuryGothic;
+    src: url("../font/CenturyGothic.suit");
+}
+
 body{
 	padding-top: 51px;
     background-image: url("../img/santos-bg1.jpg");
     background-color: #ffffff;  
     background-size: 100% auto;
+    font-family: 'centuryGothic', sans-serif, serif;
 }
 
 /* ng-cloak */
