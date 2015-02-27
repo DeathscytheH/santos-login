@@ -29,6 +29,11 @@ app.config(['$routeProvider',
                 controller: 'authCtrl',
                 role: '0'
             })
+            .when('/tabs', {
+                title: 'Dashboard',
+                templateUrl: 'partials/tabs.html',
+                controller: 'authCtrl'
+            })        
             .otherwise({
                 redirectTo: '/login'
             });

@@ -3,6 +3,8 @@ app.controller('authCtrl', function ($scope, $rootScope, $routeParams, $location
     $scope.login = {};
     $scope.signup = {};
     $scope.abono = {};
+    $scope.actualizar={};
+    
     $scope.doLogin = function (customer) {
         Data.post('login', {
             customer: customer
@@ -21,6 +23,7 @@ app.controller('authCtrl', function ($scope, $rootScope, $routeParams, $location
         acepta_terminos: false
         //Se agregaron acepta_mailing y acepta_terminos. Se movieron apellido_paterno, apellido_materno y name.
     };
+    
     $scope.signUp = function (customer) {
         Data.post('signUp', {
             customer: customer
@@ -41,6 +44,16 @@ app.controller('authCtrl', function ($scope, $rootScope, $routeParams, $location
             }
         });
     };
+    $scope.actualizarDatos = function (customer) {
+        Data.post('actualizarDatos', {
+            customer: customer
+        }).then(function (results) {
+            Data.toast(results);
+            if (results.status == "success") {
+                $location.path('dashboard');
+            }
+        });
+    };    
     $scope.logout = function () {
         Data.get('logout').then(function (results) {
             Data.toast(results);

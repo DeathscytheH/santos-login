@@ -64,6 +64,38 @@ $app->post('/login', function() use ($app) {
         }
     echoResponse(200, $response);
 });
+//Actualizar datos
+$app->post('/actualizarDatos', function() use ($app){
+    $response = array();
+    $r = json_decode($app->request->getBody());
+    $db = new DbHandler();
+    //Actualizar en base a los datos enviados
+    //Session para pedir el mail
+    $session = $db->getSession();
+    $uid = $session['uid'];
+    $email = $session['email'];
+    //Sacar datos del json para meterlos en la query
+    $nombre=$r->customer->nombre;
+    $apellido_paterno=$r->customer->apellido_paterno;
+    $apellido_materno=$r->customer->apellido_materno;
+    $fecha_nacimiento=$r->customer->fecha_nacimiento;
+    $abonado_desde=$r->customer->abonado_desde;
+    $celular=$r->customer->celular;
+    $fijo=$r->customer->fijo;
+    $sexo=$r->customer->sexo;
+    $calle=$r->customer->calle;
+    $colonia=$r->customer->colonia;
+    $estado=$r->customer->estado;
+    $facebook=$r->customer->facebook;
+    $twitter=$r->customer->twitter;
+    $instagram=$r->customer->instagram;
+    //Actualizar los datos
+    $actualizar = $db->updateValidar("update abonados_test set name='$nombre', apellido_paterno='$apellido_paterno', apellido_materno='$apellido_materno', abonado_desde='$abonado_desde', fecha_nacimiento='$fecha_nacimiento', celular='$celular', telefono='$fijo', sexo=$sexo, calle='$calle', colonia='$colonia', estado='$estado', facebook='$facebook', twitter='$twitter', instagram='$instagram'  where email='$email'");  
+    //meterlos en la session
+    $response["status"] = "success";
+    $response["message"] = "Exito hasta ahorita";
+    echoResponse(200, $response);      
+});
 //Registro de nuevos abonos
 /**/
 $app->post('/abonoRegistro', function() use ($app) {
