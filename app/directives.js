@@ -70,10 +70,10 @@ app.directive("registrarAbono", function () {
     };
 });
 
-app.directive("abonosRegistrados", function () {
+app.directive("registrarDatos", function () {
     return {
-        restrict: "E",
-        templateUrl: "partials/abonos-registrados.html"
+        restrict: 'E',
+        templateUrl: "partials/registro-datos.html"
     };
 });
 

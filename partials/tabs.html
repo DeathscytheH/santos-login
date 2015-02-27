@@ -5,24 +5,18 @@
       <a href ng-click="tab.setTab(1)">Inicio</a>
     </li>
     <li ng-class="{ active:tab.isSet(2) }">
-      <a href ng-click="tab.setTab(2)">Abonos Registrados</a>
+      <a href ng-click="tab.setTab(2)">Registra un nuevo abono</a>
     </li>
     <li ng-class="{ active:tab.isSet(3) }">
-      <a href ng-click="tab.setTab(3)">Registra un nuevo abono</a>
-    </li>
-    <li ng-class="{ active:tab.isSet(4) }">
-      <a href ng-click="tab.setTab(4)">Actualiza tus datos</a>
+      <a href ng-click="tab.setTab(3)">Actualiza tus datos</a>
     </li>    
   </ul>
 
   <!--  Description Tab's Content  -->
   <abonado-descripcion ng-show="tab.isSet(1)" ></abonado-descripcion>
 
-  <!--  Spec Tab's Content  -->
-  <abonos-registrados ng-show="tab.isSet(2)"></abonos-registrados>
-
   <!--  Review Tab's Content  -->
-  <registrar-abono ng-show="tab.isSet(3)"></registrar-abono>
+  <registrar-abono ng-show="tab.isSet(2)"></registrar-abono>
 
-  <product-reviews ng-show="tab.isSet(4)"></product-reviews>
+  <registrar-datos ng-show="tab.isSet(3)"></registrar-datos>
 </section>

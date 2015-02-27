@@ -6,8 +6,8 @@ $app->get('/session', function() {
     $response["email"] = $session['email'];
     //Aqui tambien va la variable de la session
     //$response["name"] = $session['name'];
-    $response['fecha_registro'] = $session['fecha_registro'];
-    $response['no_abonado'] = $session['no_abonado'];
+    //$response['fecha_registro'] = $session['fecha_registro'];
+    //$response['no_abonado'] = $session['no_abonado'];
     //Variables de abonados
     $response['paquete'] = $session['paquete'];
     $response['zona'] = $session['zona'];
@@ -64,10 +64,58 @@ $app->post('/login', function() use ($app) {
         }
     echoResponse(200, $response);
 });
+//Registro de nuevos abonos
+/**/
+$app->post('/abonoRegistro', function() use ($app) {
+    $response = array();
+    $r = json_decode($app->request->getBody());
+    verifyRequiredParams(array('no_abonado'),$r->customer);
+    $no_abonado = $r->customer->no_abonado;
+    //Requiero obtener el correo. Se obtuvo de la session en php
+    $db = new DbHandler();
+    $session = $db->getSession();
+    $uid = $session['uid'];
+    $email = $session['email'];
+    $r->customer->uid=$uid;
+    $r->customer->email=$email;
+    //Guardar el correo y el nuevo numero en la db.
+    //El abono existe y no esta registrado con otra persona
+    $noAbonoExiste =$db->getOneRecord("select PAQUETE, ZONA, SECCION, FILA, ASIENTO from superBoletos where ABONO like '%$no_abonado' and valido=0");
+    if($noAbonoExiste){
+        //Si existe lo registramos en la tabla de abonados
+        $nombre_tablas = "no_abonos_test";
+        $nombre_columnas = array('uid','email', 'no_abonado','PAQUETE', 'ZONA', 'SECCION', 'FILA', 'ASIENTO');
+        //Completamos el json para insertarlo
+        $r->customer->PAQUETE=$noAbonoExiste['PAQUETE'];
+        $r->customer->ZONA=$noAbonoExiste['ZONA'];
+        $r->customer->SECCION=$noAbonoExiste['SECCION'];
+        $r->customer->FILA=$noAbonoExiste['FILA'];
+        $r->customer->ASIENTO=$noAbonoExiste['ASIENTO'];
+        $resultado = $db->insertIntoTable($r->customer, $nombre_columnas, $nombre_tablas);
+        $cambiarValido = $db->updateValidar("update superBoletos set valido=1 where ABONO like '%$no_abonado' and valido=0");
+        //Checar porque pitos no funciona la validacion con != NULL
+        if($resultado == 0 and $cambiarValido == NULL){
+            //Si se inserta en la tabla de abonados, actualizamos la se superboletos  
+            $response["status"] = "success";
+            $response["message"] = "Exito hasta ahorita $no_abonado $email $uid";
+            echoResponse(200, $response);             
+        } else {
+            $response["status"] = "error";
+            $response["message"] = "Error al registrar abono. Por favor intentelo mas tarde. ".gettype($resultado)." ".gettype($cambiarValido);
+        echoResponse(201, $response);
+        }      
+    } else {
+        //Si no existe, lanzamos este error.
+        $response["status"] = "error";
+        $response["message"] = "Error al registrar abono. Por favor revise los numeros e intentelo de nuevo";
+        echoResponse(201, $response);
+        }
+    
+});
 $app->post('/signUp', function() use ($app) {
     $response = array();
     $r = json_decode($app->request->getBody());
-    verifyRequiredParams(array('email', 'password', 'acepta_mailing'),$r->customer);
+    verifyRequiredParams(array('email', 'password', 'acepta_terminos'),$r->customer);
     require_once 'passwordHash.php';
     $db = new DbHandler();
     $no_abonado = $r->customer->no_abonado;

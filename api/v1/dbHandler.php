@@ -87,6 +87,9 @@ public function destroySession(){
         unset($_SESSION['uid']);
         unset($_SESSION['name']);
         unset($_SESSION['email']);
+        unset($_SESSION['fecha_registro']);
+        unset($_SESSION['no_abonado']);
+        unset($_SESSION['email']);        
         $info='info';
         if(isSet($_COOKIE[$info]))
         {

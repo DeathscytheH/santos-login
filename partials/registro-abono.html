@@ -1,7 +1,7 @@
 <div class="page-content">
     <div class="row">
         <div class="space-6"></div>
-        <div class="col-sm-6 col-sm-offset-1">
+        <div class="col-sm-10">
             <div id="login-box" class="login-box visible widget-box no-border">
                 <div class="widget-body">
                     <div class="widget-main">
@@ -9,13 +9,13 @@
                             Registra un nuevo Abono
                         </h4>
                         <br/>
-                        <form name="signupForm" class="form-horizontal" role="form">
+                        <form name="abonoForm" class="form-horizontal" role="form">
                             <div class="form-group">
                                 <label class="col-sm-5 control-label no-padding-right" for="no_abonado">Numero de Abonado</label>
                                 <div class="col-sm-7">
                                     <span class="block input-icon input-icon-right">
-                                <input type="text" class="form-control" name = "no_abonado" placeholder="Ultimos 12 digitos" ng-model="signup.no_abonado" ng-maxlength="12" required/>
-                                <small class="errorMessage" data-ng-show="signupForm.no_abonado.$dirty && signupForm.no_abonado.$invalid"> Ingresa los ultimos doce digitos de tu numero de abonado</small>
+                                <input type="text" class="form-control" name = "no_abonado" placeholder="Ultimos 12 digitos" ng-model="abono.no_abonado" ng-maxlength="12" required/>
+                                <small class="errorMessage" data-ng-show="abonoForm.no_abonado.$dirty && abonoForm.no_abonado.$invalid"> Ingresa los ultimos doce digitos de tu numero de abonado</small>
                             </span>
                                 </div>
                             </div>
@@ -23,25 +23,19 @@
                                 <label class="col-sm-5 control-label no-padding-right" for="no_abonado2">Confirma tu numero de abonado</label>
                                 <div class="col-sm-7">
                                     <span class="block input-icon input-icon-right">
-                                <input type="text" class="form-control" name="no_abonado2" placeholder="Numero de abonado otra vez" ng-model="signup.no_abonado2" ng-maxlength="12" no_abonado-match="signup.no_abonado" required/>                                
-                                <small class="errorMessage" data-ng-show="signupForm.no_abonado2.$dirty && signupForm.no_abonado2.$error.required"> Ingresa tu numero de abonado otra vez.</small>
+                                <input type="text" class="form-control" name="no_abonado2" placeholder="Numero de abonado otra vez" ng-model="abono.no_abonado2" ng-maxlength="12" no_abonado-match="abono.no_abonado" required/>                                
+                                <small class="errorMessage" data-ng-show="abonoForm.no_abonado2.$dirty && abonoForm.no_abonado2.$error.required"> Ingresa tu numero de abonado otra vez.</small>
 
-                               <small class="errorMessage" data-ng-show="signupForm.no_abonado2.$dirty && signupForm.no_abonado2.$error.no_abonadoNoMatch && !signupForm.no_abonado2.$error.required"> Los numeros de abonado no son iguales.</small>
+                               <small class="errorMessage" data-ng-show="abonoForm.no_abonado2.$dirty && abonoForm.no_abonado2.$error.no_abonadoNoMatch && !abonoForm.no_abonado2.$error.required"> Los numeros de abonado no son iguales.</small>
 
                             </span>
-                               <img class="img-responsive" src="img/abono.jpg" alt="">
                                 </div>
-                            </div>                           
-                        
-                            
-                         
-      
-                                                   
-
+                            </div>
+                            <img class="img-responsive" src="img/abono.jpg" alt="">
                             <div class="form-group">
                                 <span class="lbl col-sm-5"> </span>
                                 <div class="col-sm-7">
-                                    <button type="submit" class="width-35 pull-right btn btn-sm btn-primary" ng-click="signUp(signup)" data-ng-disabled="signupForm.$invalid">
+                                    <button type="submit" class="width-35 pull-right btn btn-sm btn-primary" ng-click="abonoRegistro(abono)" data-ng-disabled="abonoForm.$invalid">
                                         Registra tu abono
                                     </button>
                                 </div>
