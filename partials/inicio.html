@@ -2,97 +2,46 @@
     <div class="widget-main">
         <h4 class="header blue lighter bigger">
                             <i class="icon-coffee green"></i>
-                            Bienvenido {{name}}
+                            Bienvenido {{nombre}} {{apellido_paterno}}!
                         </h4>
-        <div class="space-16 "></div>
-        UID: {{uid}}
-        <br/>E-MAIL: {{email}}
-        <br/>Fecha Registro: {{fecha_registro}}
-        <br/>
-        <br>
+                        <a ng-click="logout();">Logout</a>
         <div>
             <table class="table table-striped">
-                <tr ng-show="nombre != null">
-                    <th>Nombre</th>
-                    <td>{{nombre}}</td>
-                </tr>
-                <tr ng-show="apellido_paterno != null">
-                    <th>Apellido Paterno</th>
-                    <td>{{apellido_paterno}}</td>
-                </tr>
-                <tr ng-show="apellido_materno != null">
-                    <th>Apellido Materno</th>
-                    <td>{{apellido_materno}}</td>
-                </tr>
-                <tr ng-show="fecha_nacimiento != null">
-                    <th>Fecha de Nacimiento</th>
-                    <td>{{fecha_nacimiento}}</td>
-                </tr>                
-                <tr ng-show="abonado_desde != null">
-                    <th>Abonado desde</th>
-                    <td>{{abonado_desde}}</td>
-                </tr>
-                <tr ng-show="celular != null">
-                    <th>Celular</th>
-                    <td>{{celular}}</td>
-                </tr>
-                <tr ng-show="fijo != null">
-                    <th>Telefono Fijo</th>
-                    <td>{{fijo}}</td>
-                </tr>
-                <tr ng-show="email != null">
+                <tr>
                     <th>Email</th>
-                    <td>{{email}}</td>
+                    <td><a href="#" editable-email="email">{{email || 'Vacio'}}</a></td>
+                </tr>               
+                <tr>
+                    <th>Nombre</th>
+                    <td><a href="#" editable-text="nombre">{{nombre || 'Vacio'}}</a></td>
                 </tr>
-                <tr ng-show="sexo != null">
-                    <th>Sexo</th>
-                    <td>{{sexo}}</td>
+                <tr>
+                    <th>Apellido Paterno</th>
+                    <td><a href="#" editable-text="apellido_paterno">{{apellido_paterno || 'Vacio'}}</a></td>
                 </tr>
-                <tr ng-show="calle != null">
-                    <th>Calle</th>
-                    <td>{{calle}}</td>
+                <tr>
+                    <th>Apellido Materno</th>
+                    <td><a href="#" editable-text="apellido_materno">{{apellido_materno || 'Vacio'}}</a></td>
                 </tr>
-                <!-- 
-                <tr ng-show="no_exterior != null">
-                    <th>No. Exterior</th>
-                    <td>{{no_exterior}}</td>
+                <tr>
+                    <th>Fecha de Nacimiento</th>
+                    <td><a href="#" editable-date="fecha_nacimiento">{{fecha_nacimiento || 'Vacio'}}</a></td>
                 </tr>                
-                <tr ng-show="no_interior != null">
-                    <th>No. Interior</th>
-                    <td>{{no_interior}}</td>    
+                <tr>
+                    <th>Celular</th>
+                    <td><a href="#" editable-tel="celular" e-pattern="\d{3}\-\d{3}\-\d{4}\">{{celular || 'Vacia'}}</a></td>
                 </tr>
-                <tr ng-show="municipio != null">
-                    <th>Municipio</th>
-                    <td>{{municipio}}</td>
+                <tr>
+                    <th>Telefono Fijo</th>
+                    <td><a href="#" editable-tel="fijo" e-pattern="\d{3}\-\d{3}\-\d{4}\">{{fijo || 'Vacio'}}</a></td>
                 </tr>
-                <tr ng-show="cp != null">
-                    <th>CP</th>
-                    <td>{{cp}}</td>
-                </tr>                              
-                -->
-                <tr ng-show="colonia != null">
-                    <th>Colonia</th>
-                    <td>{{colonia}}</td>
-                </tr>
-                <tr ng-show="estado != null">
-                    <th>Estado</th>
-                    <td>{{estado}}</td>
-                </tr>
-                <tr ng-show="facebook != null">
-                    <th>Facebook</th>
-                    <td>{{facebook}}</td>
-                </tr>
-                <tr ng-show="twitter != null">
-                    <th>Twitter</th>
-                    <td>{{twitter}}</td>
-                </tr>
-                <tr ng-show="instagram != null">
-                    <th>Instagram</th>
-                    <td>{{instagram}}</td>
+                <tr>
+                    <th>Sexo</th>
+                    <td><a href="#" editable-text="sexo">{{sexo || 'Vacio'}}</a></td>
                 </tr>
             </table>
         </div>
-        <a ng-click="logout();">Logout</a>
+        <a ng-click="datos_basicos();">Actualizar</a>        
     </div>
 </div>
 <div class="widget-body">
@@ -115,13 +64,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>{{no_abonado}}</td>
-                        <td>{{paquete}}</td>
-                        <td>{{zona}}</td>
-                        <td>{{seccion}}</td>
-                        <td>{{fila}}</td>
-                        <td>{{asiento}}</td>
+                    <tr ng-repeat="abono in abonos">
+                        <td>{{abono[2]}}</td>
+                        <td>{{abono[7]}}</td>
+                        <td>{{abono[3]}}</td>
+                        <td>{{abono[4]}}</td>
+                        <td>{{abono[5]}}</td>
+                        <td>{{abono[6]}}</td>
                     </tr>
                 </tbody>
             </table>

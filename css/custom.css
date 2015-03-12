@@ -80,3 +80,10 @@ padding-bottom: 10px;*/
 .form-group-addon{
 	padding-left: -20px;
 }
+div[ng-app] { margin: 5px; }
+div[ng-controller="authCtrl"] > div {
+   height: 35px;
+}
+div[ng-controller="authCtrl"] > div > * {
+   vertical-align: top;
+}

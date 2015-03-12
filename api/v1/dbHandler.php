@@ -15,7 +15,12 @@ class DbHandler {
      */
     public function getOneRecord($query) {
         $r = $this->conn->query($query.' LIMIT 1') or die($this->conn->error.__LINE__);
-        return $result = $r->fetch_assoc();    
+        return $result = $r->fetch_assoc();   
+    }
+
+    public function selectAll($query) {
+        $r = $this->conn->query($query) or die($this->conn->error.__LINE__);
+        return $result = $r->fetch_all();
     }
     //actualizar un record
     public function updateValidar($query){
@@ -60,21 +65,16 @@ public function getSession(){
         $sess["uid"] = $_SESSION['uid'];
         //$sess["name"] = $_SESSION['name'];
         $sess["email"] = $_SESSION['email'];
-        //agregados
-        $sess['fecha_registro'] = $_SESSION['fecha_registro'];
-        $sess['no_abonado'] = $_SESSION['no_abonado'];
         //Datos de abonos
-        $sess['paquete'] = $_SESSION['paquete'];
-        $sess['zona'] = $_SESSION['zona'];
-        $sess['seccion'] = $_SESSION['seccion'];
-        $sess['fila'] = $_SESSION['fila'];
-        $sess['asiento'] = $_SESSION['asiento'];
+        /**/
+        $sess['abonos'] = $_SESSION['abonos'];
     }
     else
     {
         $sess["uid"] = '';
         $sess["name"] = 'Guest';
         $sess["email"] = '';
+        $sess["abonos"] = '';
     }
     return $sess;
 }
@@ -85,10 +85,10 @@ public function destroySession(){
     if(isSet($_SESSION['uid']))
     {
         unset($_SESSION['uid']);
-        unset($_SESSION['name']);
+        //unset($_SESSION['name']);
         unset($_SESSION['email']);
-        unset($_SESSION['fecha_registro']);
-        unset($_SESSION['no_abonado']);
+        //unset($_SESSION['fecha_registro']);
+        unset($_SESSION['abonos']);
         unset($_SESSION['email']);        
         $info='info';
         if(isSet($_COOKIE[$info]))

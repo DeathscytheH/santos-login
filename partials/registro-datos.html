@@ -1,185 +1,37 @@
-<div class="page-content">
-    <div class="row">
-        <div class="space-6"></div>
-        <div class="col-sm-10 col-offset-2">
-            <div id="login-box" class="login-box visible widget-box no-border">
-                <div class="widget-body">
-                    <div class="widget-main">
-                        <h4 class="header blue lighter bigger">
-                            Actualiza tus datos
+<div class="widget-body">
+    <div class="widget-main">
+        <h4 class="header blue lighter bigger">
+                            <i class="icon-coffee green"></i>
+                            Bienvenido {{nombre}} {{apellido_paterno}}!
                         </h4>
-                        <h5 class="header blue lighter bigger">
-                            Ingresa tus datos faltantes
-                        </h5>
-                        <br/>
-                        <form name="actualizarDatosForm" class="form-horizontal" role="form">
-                            <div class="form-group"  ng-show="nombre == null">
-                                <label class="col-sm-3 control-label no-padding-right" for="nombre">Nombre</label>
-                                <div class="col-sm-9">
-                                    <span class="block input-icon input-icon-right">
-                                <input type="text" class="form-control" placeholder="Nombre" ng-model="actualizar.nombre" />
-                            </span>
-                                </div>
-                            </div>
-                            <div class="form-group" ng-show="apellido_paterno == null">
-                                <label class="col-sm-3 control-label no-padding-right" for="apellido_paterno">Apellido Paterno</label>
-                                <div class="col-sm-9">
-                                    <span class="block input-icon input-icon-right">
-                                <input type="text" class="form-control" placeholder="Apellido Paterno" ng-model="actualizar.apellido_paterno" />
-                            </span>
-                                </div>
-                            </div>
-                            <div class="form-group" ng-show="apellido_materno == null">
-                                <label class="col-sm-3 control-label no-padding-right" for="apellido_materno">Apellido Materno</label>
-                                <div class="col-sm-9">
-                                    <span class="block input-icon input-icon-right">
-                                <input type="text" class="form-control" placeholder="Apellido Materno" ng-model="actualizar.apellido_materno" />
-                            </span>
-                                </div>
-                            </div>
-                            <div class="form-group" ng-show="abonado_desde == null">
-                                <label class="col-sm-3 control-label no-padding-right" for="abonado_desde">Abonado desde</label>
-                                <div class="col-sm-9">
-                                    <span class="block input-icon input-icon-right">
-                                <input type="text" class="form-control" placeholder="Abonado desde" ng-model="actualizar.abonado_desde" />
-                            </span>
-                                </div>
-                                <!--
-                                    <div class="input-append date" id="datepicker" data-date="02-2012" data-date-format="mm-yyyy">
-                                    <input  type="text" readonly="readonly" name="date" >
-                                    <span class="add-on"><i class="icon-th"></i></span>	  
-                                    </div> 
-                                -->
-                            </div>
-                            <div class="form-group" ng-show="celular == null">
-                                <label class="col-sm-3 control-label no-padding-right" for="celular">Telefono celular</label>
-                                <div class="col-sm-9">
-                                    <span class="block input-icon input-icon-right">
-                                <input type="text" class="form-control" placeholder="Telefono celular" ng-model="actualizar.celular" />
-                            </span>
-                                </div>
-                            </div>
-                            <div class="form-group" ng-show="fijo == null">
-                                <label class="col-sm-3 control-label no-padding-right" for="fijo">Telefono fijo</label>
-                                <div class="col-sm-9">
-                                    <span class="block input-icon input-icon-right">
-                                <input type="text" class="form-control" placeholder="Telefono fijo" ng-model="actualizar.fijo" />
-                            </span>
-                                </div>
-                            </div>
-                            <div class="form-group" ng-show="email == null">
-                                <label class="col-sm-3 control-label no-padding-right" for="email">Email</label>
-                                <div class="col-sm-9">
-                                    <span class="block input-icon input-icon-right">
-                                <input type="text" class="form-control" placeholder="Email" ng-model="actualizar.email" />
-                            </span>
-                                </div>
-                            </div>
-                            <div class="form-group"  ng-show="sexo == null">
-                                <label class="col-sm-3 control-label no-padding-right" for="sexo">Sexo</label>
-                                <div class="col-sm-9">
-                                    <span class="block input-icon input-icon-right">
-                                    <select ng-model="actualizar.sexo">
-                                        <option value="masculino">Masculino</option>
-                                        <option value="femenino">Femenino</option>
-                                    </select>
-                            </span>
-                                </div>
-                            </div>
-                            <div class="form-group" ng-show="calle == null">
-                                <label class="col-sm-3 control-label no-padding-right" for="calle">Calle</label>
-                                <div class="col-sm-9">
-                                    <span class="block input-icon input-icon-right">
-                                <input type="text" class="form-control" placeholder="Calle" ng-model="actualizar.calle" />
-                            </span>
-                                </div>
-                            </div>
-                            <div class="form-group" ng-show="no_exterior == null">
-                                <label class="col-sm-3 control-label no-padding-right" for="no_exterior">No Exterior</label>
-                                <div class="col-sm-9">
-                                    <span class="block input-icon input-icon-right">
-                                <input type="text" class="form-control" placeholder="No Exterior" ng-model="actualizar.no_exterior" />
-                            </span>
-                                </div>
-                            </div>
-                            <div class="form-group" ng-show="no_interior == null">
-                                <label class="col-sm-3 control-label no-padding-right" for="no_interior">No Interior</label>
-                                <div class="col-sm-9">
-                                    <span class="block input-icon input-icon-right">
-                                <input type="text" class="form-control" placeholder="No Interior" ng-model="actualizar.no_interior" />
-                            </span>
-                                </div>
-                            </div>
-                            <div class="form-group" ng-show="colonia == null">
-                                <label class="col-sm-3 control-label no-padding-right" for="colonia">Colonia</label>
-                                <div class="col-sm-9">
-                                    <span class="block input-icon input-icon-right">
-                                <input type="text" class="form-control" placeholder="Colonia" ng-model="actualizar.colonia" />
-                            </span>
-                                </div>
-                            </div>
-                            <div class="form-group" ng-show="municipio == null">
-                                <label class="col-sm-3 control-label no-padding-right" for="municipio">Municipio</label>
-                                <div class="col-sm-9">
-                                    <span class="block input-icon input-icon-right">
-                                <input type="text" class="form-control" placeholder="Municipio" ng-model="actualizar.municipio" />
-                            </span>
-                                </div>
-                            </div>
-                            <div class="form-group" ng-show="estado == null">
-                                <label class="col-sm-3 control-label no-padding-right" for="estado">Estado</label>
-                                <div class="col-sm-9">
-                                    <span class="block input-icon input-icon-right">
-                                <input type="text" class="form-control" placeholder="Estado" ng-model="actualizar.estado" />
-                            </span>
-                                </div>
-                            </div>
-                            <div class="form-group" ng-show="cp == null">
-                                <label class="col-sm-3 control-label no-padding-right" for="cp">Codigo Postal</label>
-                                <div class="col-sm-9">
-                                    <span class="block input-icon input-icon-right">
-                                <input type="text" class="form-control" placeholder="Codigo Postal" ng-model="actualizar.cp" />
-                            </span>
-                                </div>
-                            </div>
-                            <div class="form-group" ng-show="facebook == null">
-                                <label class="col-sm-3 control-label no-padding-right" for="facebook">Facebook</label>
-                                <div class="col-sm-9">
-                                    <span class="block input-icon input-icon-right">
-                                <input type="text" class="form-control" placeholder="Facebook" ng-model="actualizar.facebook" />
-                            </span>
-                                </div>
-                            </div>
-                            <div class="form-group" ng-show="twitter == null">
-                                <label class="col-sm-3 control-label no-padding-right" for="twitter">Twitter</label>
-                                <div class="col-sm-9">
-                                    <span class="block input-icon input-icon-right">
-                                <input type="text" class="form-control" placeholder="Twitter" ng-model="actualizar.twitter" />
-                            </span>
-                                </div>
-                            </div>
-                            <div class="form-group" ng-show="instagram == null">
-                                <label class="col-sm-3 control-label no-padding-right" for="instagram">Instagram</label>
-                                <div class="col-sm-9">
-                                    <span class="block input-icon input-icon-right">
-                                <input type="text" class="form-control" placeholder="Instagram" ng-model="actualizar.instagram" />
-                            </span>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <span class="lbl col-sm-5"> </span>
-                                <div class="col-sm-7">
-                                    <button type="submit" class="width-35 pull-right btn btn-sm btn-primary" ng-click="actualizarDatos(actualizar)" data-ng-disabled="actualizarDatosForm.$invalid">
-                                        Actualizar
-                                    </button>
-                                </div>
-                            </div>
-                            <span class="lbl col-sm-5"> </span>
-                        </form>
-                    </div>
-                </div>
-            </div>
-
+        <div>
+            <table class="table table-striped">
+                <tr>
+                    <th>Direccion (Calle y numero)</th>
+                    <td><a href="#" editable-text="calle">{{calle || 'Vacio'}}</a></td>
+                </tr>               
+                <tr>
+                    <th>Colonia</th>
+                    <td><a href="#" editable-text="colonia">{{colonia || 'Vacio'}}</a></td>
+                </tr>               
+                <tr>
+                    <th>Ciudad</th>
+                    <td><a href="#" editable-text="ciudad">{{ciudad || 'Vacio'}}</a></td>
+                </tr>
+                <tr>
+                    <th>Facebook</th>
+                    <td><a href="#" editable-text="facebook">{{facebook || 'Vacio'}}</a></td>
+                </tr>
+                <tr>
+                    <th>Twitter</th>
+                    <td><a href="#" editable-text="twitter">{{twitter || 'Vacio'}}</a></td>
+                </tr>
+                <tr>
+                    <th>Instagram</th>
+                    <td><a href="#" editable-date="instagram">{{instagram || 'Vacio'}}</a></td>
+                </tr>                
+            </table>
         </div>
+        <a ng-click="datos_adicionales();">Actualizar</a>
     </div>
 </div>

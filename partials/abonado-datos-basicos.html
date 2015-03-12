@@ -1,0 +1,120 @@
+<div ng-controller="DatosBasicosController as datos_basicosCtrl ">
+    <div class="container">
+        <table class="table table-condensed">
+            <thead>
+                <tr>
+
+                    <th>Email</th>
+                    <th>Nombre</th>
+                    <th>Apellido paterno</th>
+                    <th>Apellido materno</th>
+                    <th>Fecha de nacimiento</th>
+                    <th>Abonado desde</th>
+                    <th>Telefono celular</th>
+                    <th>Telefono Fijo</th>
+                    <th>Sexo</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr ng-repeat="dato_basico in datos_basicos track by product.id">
+
+
+                    <td>{{dato_basico.email}}</td>
+                    <td>{{dato_basico.nombre}}</td>
+                    <td>{{dato_basico.apellido_paterno}}</td>
+                    <td>{{dato_basico.apellido_materno}}</td>
+                    <td>{{dato_basico.fecha_nacimiento}}</td>
+                    <td>{{dato_basico.abonado_desde}}</td>
+                    <td>{{dato_basico.celular}}</td>
+                    <td>{{dato_basico.fijo}}</td>
+                    <td>{{dato_basico.sexo}}</td>
+                    <td>
+                        <button class="btn btn-warning btn-sm" ng-click="datos_basicosCtrl.edit(dato_basico)"><span class="glyphicon-pencil"></span>
+                        </button>
+                    </td>
+
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </tfoot>
+        </table>
+            <form role="form" class="form-horizontal" ng-submit="datos_basicosCtrl.add()">
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">Email</label>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" placeholder="Email" ng-model="datos_basicosCtrl.dato_basico.email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">Nombre</label>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" placeholder="Nombre" ng-model="datos_basicosCtrl.dato_basico.nombre">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">Apellido Paterno</label>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" placeholder="Apellido Paterno" ng-model="datos_basicosCtrl.dato_basico.apellido_paterno">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">Apellido Materno</label>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" placeholder="Apellido Materno" ng-model="datos_basicosCtrl.dato_basico.apellido_materno">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">Fecha de nacimiento</label>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" placeholder="Fecha de nacimiento" ng-model="datos_basicosCtrl.dato_basico.fecha_nacimiento">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">Abonado desde</label>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" placeholder="Abonado desde" ng-model="datos_basicosCtrl.dato_basico.abonado_desde">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">Telefono celular</label>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" placeholder="Telefono celular" ng-model="datos_basicosCtrl.dato_basico.celular">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">Telefono fijo</label>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" placeholder="Telefono fijo" ng-model="datos_basicosCtrl.dato_basico.fijo">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">Sexo</label>
+                    <div class="col-lg-10">
+                        <select ng-model="datos_basicosCtrl.dato_basico.sexo">
+                            <option value="M">Masculino</option>
+                            <option value="F">Femenino</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-offset-2 col-lg-10">
+                        <button type="submit" class="btn btn-default" ng-hide="datos_basicosCtrl.dato_basico._state=='edit'">Actualizar</button>
+                        <button type="submit" class="btn btn-default" ng-show="datos_basicosCtrl.dato_basico._state=='edit'">Editar</button>
+                        <a class="btn btn-default" ng-click="datos_basicosCtrl.cancelUpdate()" ng-show="datos_basicosCtrl.dato_basico._state=='edit'">Cancelar</a>
+                    </div>
+                </div>
+            </form>        

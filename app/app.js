@@ -1,4 +1,4 @@
-var app = angular.module('myApp', ['ngRoute', 'ngAnimate', 'toaster']);
+var app = angular.module('myApp', ['ngRoute', 'ngAnimate', 'toaster', 'xeditable']);
 
 app.config(['$routeProvider',
   function ($routeProvider) {
@@ -48,13 +48,7 @@ app.config(['$routeProvider',
                     //$rootScope.name = results.name;
                     $rootScope.email = results.email;
                     //Abonos registrados
-                    $rootScope.fecha_registro = results.fecha_registro;
-                    $rootScope.no_abonado = results.no_abonado;
-                    $rootScope.paquete = results.paquete;
-                    $rootScope.zona = results.zona;
-                    $rootScope.seccion = results.seccion;
-                    $rootScope.fila = results.fila;
-                    $rootScope.asiento = results.asiento;
+                    $rootScope.abonos = results.abonos;
                 } else {
                     var nextUrl = next.$$route.originalPath;
                     if (nextUrl == '/signup' || nextUrl == '/login') {
@@ -65,4 +59,8 @@ app.config(['$routeProvider',
                 }
             });
         });
+    });
+/**/
+    app.run(function(editableOptions) {
+      editableOptions.theme = 'bs3';
     });

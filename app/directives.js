@@ -77,6 +77,20 @@ app.directive("registrarDatos", function () {
     };
 });
 
+app.directive("abonadoDatosBasicos", function () {
+    return {
+        restrict: 'E',
+        templateUrl: "partials/abonado-datos-basicos.html"
+    };
+});
+
+app.directive("abonadoDatosAdicionales", function () {
+    return {
+        restrict: 'E',
+        templateUrl: "partials/abonado-datos-adicionales.html"
+    };
+});
+
 app.directive("abonadoTabs", function () {
     return {
         restrict: "E",
