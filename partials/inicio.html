@@ -5,43 +5,45 @@
                             Bienvenido {{nombre}} {{apellido_paterno}}!
                         </h4>
                         <a ng-click="logout();">Logout</a>
+                        <button class="btn btn-danger" ng-click="logout();">Logout</button>
         <div>
             <table class="table table-striped">
                 <tr>
                     <th>Email</th>
-                    <td><a href="#" editable-email="email">{{email || 'Vacio'}}</a></td>
+                    <td><a href="#" editable-email="actualizar.email">{{email || 'Vacio'}}</a></td>
                 </tr>               
                 <tr>
                     <th>Nombre</th>
-                    <td><a href="#" editable-text="nombre">{{nombre || 'Vacio'}}</a></td>
+                    <td><a href="#" editable-text="actualizar.nombre">{{nombre || 'Vacio'}}</a></td>
                 </tr>
                 <tr>
                     <th>Apellido Paterno</th>
-                    <td><a href="#" editable-text="apellido_paterno">{{apellido_paterno || 'Vacio'}}</a></td>
+                    <td><a href="#" editable-text="actualizar.apellido_paterno">{{apellido_paterno || 'Vacio'}}</a></td>
                 </tr>
                 <tr>
                     <th>Apellido Materno</th>
-                    <td><a href="#" editable-text="apellido_materno">{{apellido_materno || 'Vacio'}}</a></td>
+                    <td><a href="#" editable-text="actualizar.apellido_materno">{{apellido_materno || 'Vacio'}}</a></td>
                 </tr>
                 <tr>
                     <th>Fecha de Nacimiento</th>
-                    <td><a href="#" editable-date="fecha_nacimiento">{{fecha_nacimiento || 'Vacio'}}</a></td>
+                    <td><a href="#" editable-date="actualizar.fecha_nacimiento">{{fecha_nacimiento || 'Vacio'}}</a></td>
                 </tr>                
                 <tr>
                     <th>Celular</th>
-                    <td><a href="#" editable-tel="celular" e-pattern="\d{3}\-\d{3}\-\d{4}\">{{celular || 'Vacia'}}</a></td>
+                    <td><a href="#" editable-tel="actualizar.celular" e-pattern="\d{3}\-\d{3}\-\d{4}\">{{celular || 'Vacia'}}</a></td>
                 </tr>
                 <tr>
                     <th>Telefono Fijo</th>
-                    <td><a href="#" editable-tel="fijo" e-pattern="\d{3}\-\d{3}\-\d{4}\">{{fijo || 'Vacio'}}</a></td>
+                    <td><a href="#" editable-tel="actualizar.fijo" e-pattern="\d{3}\-\d{3}\-\d{4}\">{{fijo || 'Vacio'}}</a></td>
                 </tr>
                 <tr>
                     <th>Sexo</th>
-                    <td><a href="#" editable-text="sexo">{{sexo || 'Vacio'}}</a></td>
+                    <td><a href="#" editable-text="actualizar.sexo">{{sexo || 'Vacio'}}</a></td>
                 </tr>
             </table>
         </div>
-        <a ng-click="datos_basicos();">Actualizar</a>        
+        <a ng-click="datos_basicos(actualizar);">Actualizar</a>
+        <button class="btn btn-info" ng-click="datos_basicos();">Actualizar</button>        
     </div>
 </div>
 <div class="widget-body">

@@ -46,14 +46,14 @@ $app->post('/login', function() use ($app) {
     echoResponse(200, $response);
 });
 //Actualizar datos
-$app->post('/actualizarDatos', function() use ($app){
+$app->post('/datos_basicos', function() use ($app){
     $response = array();
     $r = json_decode($app->request->getBody());
     $db = new DbHandler();
     //Actualizar en base a los datos enviados
     //Session para pedir el mail
     $session = $db->getSession();
-    $uid = $session['uid'];
+    //$uid = $session['uid'];
     $email = $session['email'];
     //Sacar datos del json para meterlos en la query
     $nombre=$r->customer->nombre;

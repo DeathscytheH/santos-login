@@ -41,11 +41,12 @@ app.controller('authCtrl', function ($scope, $rootScope, $routeParams, $location
             Data.toast(results);
             if (results.status == "success") {
                 $location.path('dashboard');
+                $rootScope.$apply();
             }
         });
     };
-    $scope.actualizarDatos = function (customer) {
-        Data.post('actualizarDatos', {
+    $scope.datos_basicos = function (customer) {
+        Data.post('datos_basicos', {
             customer: customer
         }).then(function (results) {
             Data.toast(results);
