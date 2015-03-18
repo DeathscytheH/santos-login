@@ -49,6 +49,13 @@ app.config(['$routeProvider',
                     $rootScope.email = results.email;
                     //Abonos registrados
                     $rootScope.abonos = results.abonos;
+                    $rootScope.nombre = results.nombre;
+                    $rootScope.apellido_paterno = results.apellido_paterno;
+                    $rootScope.apellido_materno = results.apellido_materno;
+                    $rootScope.fecha_nacimiento = results.fecha_nacimiento;
+                    $rootScope.celular = results.celular;
+                    $rootScope.fijo = results.fijo;
+                    $rootScope.sexo = results.sexo;                    
                 } else {
                     var nextUrl = next.$$route.originalPath;
                     if (nextUrl == '/signup' || nextUrl == '/login') {

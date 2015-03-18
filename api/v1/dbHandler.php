@@ -63,18 +63,34 @@ public function getSession(){
     {
         //Aqui maneja la session del usuario
         $sess["uid"] = $_SESSION['uid'];
-        //$sess["name"] = $_SESSION['name'];
+        
         $sess["email"] = $_SESSION['email'];
         //Datos de abonos
         /**/
         $sess['abonos'] = $_SESSION['abonos'];
+        try{
+            $sess["nombre"] = $_SESSION['nombre'];
+            $sess["apellido_paterno"] = $_SESSION['apellido_paterno'];
+            $sess["apellido_materno"] = $_SESSION['apellido_materno'];
+            $sess["fecha_nacimiento"] = $_SESSION['fecha_nacimiento'];
+            $sess["celular"] = $_SESSION['celular'];
+            $sess["fijo"] = $_SESSION['fijo'];
+            $sess["sexo"] = $_SESSION['sexo'];        
+        } catch(Exception $e){}
     }
     else
     {
         $sess["uid"] = '';
-        $sess["name"] = 'Guest';
+        $sess["nombre"] = 'Guest';
         $sess["email"] = '';
         $sess["abonos"] = '';
+        $sess["nombre"] = '';
+        $sess["apellido_paterno"] = '';
+        $sess["apellido_materno"] = '';
+        $sess["fecha_nacimiento"] = '';
+        $sess["celular"] = '';
+        $sess["fijo"] = '';
+        $sess["sexo"] = '';
     }
     return $sess;
 }
@@ -85,9 +101,9 @@ public function destroySession(){
     if(isSet($_SESSION['uid']))
     {
         unset($_SESSION['uid']);
-        //unset($_SESSION['name']);
+        unset($_SESSION['name']);
         unset($_SESSION['email']);
-        //unset($_SESSION['fecha_registro']);
+        unset($_SESSION['fecha_registro']);
         unset($_SESSION['abonos']);
         unset($_SESSION['email']);        
         $info='info';

@@ -5,6 +5,15 @@ $app->get('/session', function() {
     $response["uid"] = $session['uid'];
     $response["email"] = $session['email'];
     $response['abonos'] = $session['abonos'];
+    try{
+        $response['nombre'] = $session['nombre'];
+        $response['apellido_paterno'] = $session['apellido_paterno'];
+        $response['apellido_materno'] = $session['apellido_materno'];
+        $response['fecha_nacimiento'] = $session['fecha_nacimiento'];
+        $response['celular'] = $session['celular'];
+        $response['fijo'] = $session['fijo'];
+        $response['sexo'] = $session['sexo'];    
+    } catch(Exception $e){}
     echoResponse(200, $session);
 });
 
@@ -46,7 +55,7 @@ $app->post('/login', function() use ($app) {
     echoResponse(200, $response);
 });
 //Actualizar datos
-$app->post('/datos_basicos', function() use ($app){
+$app->post('/datosBasicos', function() use ($app){
     $response = array();
     $r = json_decode($app->request->getBody());
     $db = new DbHandler();
@@ -60,23 +69,36 @@ $app->post('/datos_basicos', function() use ($app){
     $apellido_paterno=$r->customer->apellido_paterno;
     $apellido_materno=$r->customer->apellido_materno;
     $fecha_nacimiento=$r->customer->fecha_nacimiento;
-    $abonado_desde=$r->customer->abonado_desde;
     $celular=$r->customer->celular;
     $fijo=$r->customer->fijo;
     $sexo=$r->customer->sexo;
-    $calle=$r->customer->calle;
-    $colonia=$r->customer->colonia;
-    $estado=$r->customer->estado;
-    $facebook=$r->customer->facebook;
-    $twitter=$r->customer->twitter;
-    $instagram=$r->customer->instagram;
+    //$calle=$r->customer->calle;
+    //$colonia=$r->customer->colonia;
+    //$estado=$r->customer->estado;
+    //$facebook=$r->customer->facebook;
+    //$twitter=$r->customer->twitter;
+    //$instagram=$r->customer->instagram;
     //Actualizar los datos
-    $actualizar = $db->updateValidar("update abonados_test set name='$nombre', apellido_paterno='$apellido_paterno', apellido_materno='$apellido_materno', abonado_desde='$abonado_desde', fecha_nacimiento='$fecha_nacimiento', celular='$celular', telefono='$fijo', sexo='$sexo', calle='$calle', colonia='$colonia', estado='$estado', facebook='$facebook', twitter='$twitter', instagram='$instagram'  where email='$email'"); 
+    /*
+    , sexo='$sexo', calle='$calle', colonia='$colonia', estado='$estado', facebook='$facebook', twitter='$twitter', instagram='$instagram'
+    */
+    $actualizar = $db->updateValidar("update abonados_test set name='$nombre', apellido_paterno='$apellido_paterno', apellido_materno='$apellido_materno', fecha_nacimiento='$fecha_nacimiento', celular='$celular', telefono='$fijo', sexo='$sexo' where email='$email'"); 
+    
     //meterlos en la session
     
     $response["status"] = "success";
-    $response["message"] = "Exito hasta ahorita";
-    echoResponse(200, $response);      
+    $response["message"] = "Datos actualizados con exito.";
+    echoResponse(200, $response);
+    if (!isset($_SESSION)) {
+        session_start();
+    }
+    $_SESSION['nombre'] = $nombre;
+    $_SESSION['apellido_paterno'] = $apellido_paterno;
+    $_SESSION['apellido_materno'] = $apellido_materno;
+    $_SESSION['fecha_nacimiento'] = $fecha_nacimiento;
+    $_SESSION['celular'] = $celular;
+    $_SESSION['fijo'] = $fijo;
+    $_SESSION['sexo'] = $sexo;
 });
 //Registro de nuevos abonos
 /**/
@@ -113,11 +135,11 @@ $app->post('/abonoRegistro', function() use ($app) {
             $abonos = $db->selectAll("select * from no_abonos_test where email='$email'");
             $_SESSION['abonos'] = $abonos;            
             $response["status"] = "success";
-            $response["message"] = "Exito, abono no. $no_abonado registrado!";
+            $response["message"] = "Exito, abono No. $no_abonado registrado!";
             echoResponse(200, $response);             
         } else {
             $response["status"] = "error";
-            $response["message"] = "Error al registrar abono. Por favor intentelo mas tarde. ".gettype($resultado)." ".gettype($cambiarValido);
+            $response["message"] = "Error al registrar abono. Por favor intentelo mas tarde. ";
         echoResponse(201, $response);
         }      
     } else {
