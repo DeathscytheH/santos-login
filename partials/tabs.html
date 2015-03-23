@@ -9,10 +9,7 @@
     </li>
     <li ng-class="{ active:tab.isSet(3) }">
       <a href ng-click="tab.setTab(3)">Actualiza tus datos</a>
-    </li>
-    <li ng-class="{ active:tab.isSet(4) }">
-      <a href ng-click="tab.setTab(4)">Datos basicos</a>
-    </li>     
+    </li>    
   </ul>
 
   <!--  Description Tab's Content  -->
@@ -22,6 +19,4 @@
   <registrar-abono ng-show="tab.isSet(2)"></registrar-abono>
 
   <registrar-datos ng-show="tab.isSet(3)"></registrar-datos>
-  
-  <abonado-datos-adicionales ng-show="tab.isSet(4)"></abonado-datos-adicionales>
 </section>

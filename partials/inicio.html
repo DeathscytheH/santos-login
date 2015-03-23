@@ -2,7 +2,7 @@
     <div class="widget-main">
         <h4 class="header blue lighter bigger">
                             <i class="icon-coffee green"></i>
-                            Bienvenido {{nombre}} {{apellido_paterno}}!
+                            Bienvenido {{datos_basicos.nombre}} {{datos_basicos.apellido_paterno}}!
                         </h4>
                         <a ng-click="logout();">Logout</a>
                         <button class="btn btn-danger" ng-click="logout();">Logout</button>
@@ -10,35 +10,35 @@
             <table class="table table-striped">
                 <tr>
                     <th>Email</th>
-                    <td><a href="#" editable-email="datos_basicos.email" >{{datos_basicos.email || email || 'Vacio'}}</a></td>
+                    <td><a href="#" editable-email="datos_basicos.email" >{{datos_basicos.email || 'Vacio'}}</a></td>
                 </tr>               
                 <tr>
                     <th>Nombre</th>
-                    <td><a href="#" editable-text="datos_basicos.nombre">{{datos_basicos.nombre || nombre || 'Vacio' }}</a></td>
+                    <td><a href="#" editable-text="datos_basicos.nombre">{{datos_basicos.nombre || 'Vacio' }}</a></td>
                 </tr>
                 <tr>
                     <th>Apellido Paterno</th>
-                    <td><a href="#" editable-text="datos_basicos.apellido_paterno">{{datos_basicos.apellido_paterno || apellido_paterno || 'Vacio' }}</a></td>
+                    <td><a href="#" editable-text="datos_basicos.apellido_paterno">{{datos_basicos.apellido_paterno || 'Vacio' }}</a></td>
                 </tr>
                 <tr>
                     <th>Apellido Materno</th>
-                    <td><a href="#" editable-text="datos_basicos.apellido_materno">{{datos_basicos.apellido_materno || apellido_materno || 'Vacio' }}</a></td>
+                    <td><a href="#" editable-text="datos_basicos.apellido_materno">{{datos_basicos.apellido_materno || 'Vacio' }}</a></td>
                 </tr>
                 <tr>
                     <th>Fecha de Nacimiento</th>
-                    <td><a href="#" editable-date="datos_basicos.fecha_nacimiento">{{datos_basicos.fecha_nacimiento || fecha_nacimiento || 'Vacio' }}</a></td>
+                    <td><a href="#" editable-date="datos_basicos.fecha_nacimiento">{{datos_basicos.fecha_nacimiento || 'Vacio' }}</a></td>
                 </tr>                
                 <tr>
                     <th>Celular</th>
-                    <td><a href="#" editable-tel="datos_basicos.celular" e-pattern="\d{3}\-\d{3}\-\d{4}\">{{ datos_basicos.celular || celular || 'Vacio' }}</a></td>
+                    <td><a href="#" editable-tel="datos_basicos.celular" e-pattern="\d{3}\-\d{3}\-\d{4}\">{{ datos_basicos.celular || 'Vacio' }}</a></td>
                 </tr>
                 <tr>
                     <th>Telefono Fijo</th>
-                    <td><a href="#" editable-tel="datos_basicos.fijo" e-pattern="\d{3}\-\d{3}\-\d{4}\">{{ datos_basicos.fijo || fijo || 'Vacio' }}</a></td>
+                    <td><a href="#" editable-tel="datos_basicos.fijo" e-pattern="\d{3}\-\d{3}\-\d{4}\">{{ datos_basicos.fijo || 'Vacio' }}</a></td>
                 </tr>
                 <tr>
                     <th>Genero</th>
-                    <td><a href="#" editable-select="datos_basicos.sexo" e-ng-options="s.value as s.text for s in genero">{{ datos_basicos.sexo || sexo }}</a></td>
+                    <td><a href="#" editable-select="datos_basicos.sexo" e-ng-options="s.value as s.text for s in genero">{{ showStatus() }}</a></td>
                 </tr>
             </table>
         </div>

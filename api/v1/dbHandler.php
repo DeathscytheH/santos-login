@@ -25,6 +25,7 @@ class DbHandler {
     //actualizar un record
     public function updateValidar($query){
         $r = $this->conn->query($query) or die($this->conn->error.__LINE__);
+        return $result = $r;
     }
     /**
      * Creating new record
@@ -66,17 +67,27 @@ public function getSession(){
         
         $sess["email"] = $_SESSION['email'];
         //Datos de abonos
-        /**/
         $sess['abonos'] = $_SESSION['abonos'];
         try{
+            //Datos basicos
             $sess["nombre"] = $_SESSION['nombre'];
             $sess["apellido_paterno"] = $_SESSION['apellido_paterno'];
             $sess["apellido_materno"] = $_SESSION['apellido_materno'];
             $sess["fecha_nacimiento"] = $_SESSION['fecha_nacimiento'];
             $sess["celular"] = $_SESSION['celular'];
             $sess["fijo"] = $_SESSION['fijo'];
-            $sess["sexo"] = $_SESSION['sexo'];        
-        } catch(Exception $e){}
+            $sess["sexo"] = $_SESSION['sexo']; 
+            //Datos adicionales
+            $sess["calle"] = $_SESSION['calle'];
+            $sess["colonia"] = $_SESSION['colonia'];
+            $sess["ciudad"] = $_SESSION['ciudad'];
+            $sess["facebook"] = $_SESSION['facebook'];
+            $sess["twitter"] = $_SESSION['twitter'];
+            $sess["instagram"] = $_SESSION['instagram'];
+            
+        } catch(Exception $e){
+            //Silenciado explicitamente
+        }
     }
     else
     {
@@ -84,6 +95,7 @@ public function getSession(){
         $sess["nombre"] = 'Guest';
         $sess["email"] = '';
         $sess["abonos"] = '';
+        //Datos basicos
         $sess["nombre"] = '';
         $sess["apellido_paterno"] = '';
         $sess["apellido_materno"] = '';
@@ -91,6 +103,14 @@ public function getSession(){
         $sess["celular"] = '';
         $sess["fijo"] = '';
         $sess["sexo"] = '';
+        //Datos adicionales
+        $sess["calle"] = '';
+        $sess["colonia"] = '';
+        $sess["ciudad"] = '';
+        $sess["facebook"] = '';
+        $sess["twitter"] = '';
+        $sess["instagram"] = '';        
+        
     }
     return $sess;
 }
@@ -101,11 +121,21 @@ public function destroySession(){
     if(isSet($_SESSION['uid']))
     {
         unset($_SESSION['uid']);
-        unset($_SESSION['name']);
+        unset($_SESSION['nombre']);
         unset($_SESSION['email']);
-        unset($_SESSION['fecha_registro']);
+        unset($_SESSION['apellido_paterno']);
         unset($_SESSION['abonos']);
-        unset($_SESSION['email']);        
+        unset($_SESSION['apellido_materno']);        
+        unset($_SESSION['fecha_nacimiento']);        
+        unset($_SESSION['celular']);        
+        unset($_SESSION['fijo']);        
+        unset($_SESSION['sexo']);        
+        unset($_SESSION['calle']);        
+        unset($_SESSION['colonia']);        
+        unset($_SESSION['ciudad']);        
+        unset($_SESSION['facebook']);        
+        unset($_SESSION['twitter']);        
+        unset($_SESSION['instagram']);                
         $info='info';
         if(isSet($_COOKIE[$info]))
         {

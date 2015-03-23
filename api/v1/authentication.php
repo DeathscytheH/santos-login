@@ -6,13 +6,21 @@ $app->get('/session', function() {
     $response["email"] = $session['email'];
     $response['abonos'] = $session['abonos'];
     try{
+        //Datos basicos
         $response['nombre'] = $session['nombre'];
         $response['apellido_paterno'] = $session['apellido_paterno'];
         $response['apellido_materno'] = $session['apellido_materno'];
         $response['fecha_nacimiento'] = $session['fecha_nacimiento'];
         $response['celular'] = $session['celular'];
         $response['fijo'] = $session['fijo'];
-        $response['sexo'] = $session['sexo'];    
+        $response['sexo'] = $session['sexo'];
+        //Datos adicionales
+        $response['calle'] = $session['calle'];        
+        $response['colonia'] = $session['colonia'];
+        $response['ciudad'] = $session['ciudad'];
+        $response['facebook'] = $session['facebook'];
+        $response['twitter'] = $session['twitter'];
+        $response['instagram'] = $session['instagram'];
     } catch(Exception $e){}
     echoResponse(200, $session);
 });
@@ -26,22 +34,33 @@ $app->post('/login', function() use ($app) {
     $password = $r->customer->password;
     $email = $r->customer->email;
     //Eliminar name y otros porque no los requiero
-    $user = $db->getOneRecord("select uid,password from abonados_test where email='$email'");
+    $user = $db->getOneRecord("select * from abonados_test where email='$email'");
     if ($user != NULL) {
         if(passwordHash::check_password($user['password'],$password)){
         //Comentar name
-        //$response['name'] = $user['name'];
         $response['uid'] = $user['uid'];
-        //$response['email'] = $user['email'];
-        //$response['fecha_registro'] = $user['fecha_registro'];
-        //$response['no_abonado'] = $user['no_abonado'];
         if (!isset($_SESSION)) {
             session_start();
         }
         $_SESSION['uid'] = $user['uid'];
-        $_SESSION['email'] = $email;
+        $_SESSION['email'] = $user['email'];
+        //Datos basicos
+        $_SESSION['nombre'] = $user['name'];
+        $_SESSION['apellido_paterno'] = $user['apellido_paterno'];
+        $_SESSION['apellido_materno'] = $user['apellido_materno'];
+        $_SESSION['fecha_nacimiento'] = $user['fecha_nacimiento'];
+        $_SESSION['celular'] = $user['celular'];
+        $_SESSION['fijo'] = $user['telefono'];
+        $_SESSION['sexo'] = $user['sexo'];
+        $_SESSION['calle'] = $user['calle'];
+        $_SESSION['colonia'] = $user['colonia'];
+        $_SESSION['ciudad'] = $user['ciudad'];
+        $_SESSION['facebook'] = $user['facebook'];
+        $_SESSION['twitter'] = $user['twitter'];
+        $_SESSION['instagram'] = $user['instagram'];
         $abonos = $db->selectAll("select * from no_abonos_test where email='$email'");
         $_SESSION['abonos'] = $abonos;
+        //Datos adicionales
         $response['status'] = "success";
         $response['message'] = 'Logueado con exito.';         
         } else {
@@ -72,34 +91,76 @@ $app->post('/datosBasicos', function() use ($app){
     $celular=$r->customer->celular;
     $fijo=$r->customer->fijo;
     $sexo=$r->customer->sexo;
-    //$calle=$r->customer->calle;
-    //$colonia=$r->customer->colonia;
-    //$estado=$r->customer->estado;
-    //$facebook=$r->customer->facebook;
-    //$twitter=$r->customer->twitter;
-    //$instagram=$r->customer->instagram;
     //Actualizar los datos
-    /*
-    , sexo='$sexo', calle='$calle', colonia='$colonia', estado='$estado', facebook='$facebook', twitter='$twitter', instagram='$instagram'
-    */
     $actualizar = $db->updateValidar("update abonados_test set name='$nombre', apellido_paterno='$apellido_paterno', apellido_materno='$apellido_materno', fecha_nacimiento='$fecha_nacimiento', celular='$celular', telefono='$fijo', sexo='$sexo' where email='$email'"); 
     
     //meterlos en la session
-    
-    $response["status"] = "success";
-    $response["message"] = "Datos actualizados con exito.";
-    echoResponse(200, $response);
-    if (!isset($_SESSION)) {
-        session_start();
+    //Si no se actualiza
+    if($actualizar){
+        //meterlos en la session
+
+        $response["status"] = "success";
+        $response["message"] = "Datos actualizados con exito. $nombre, $apellido_paterno, $apellido_materno, $fecha_nacimiento, $celular, $fijo, $sexo, $actualizar";
+        echoResponse(200, $response);
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+        $_SESSION['nombre'] = $nombre;
+        $_SESSION['apellido_paterno'] = $apellido_paterno;
+        $_SESSION['apellido_materno'] = $apellido_materno;
+        $_SESSION['fecha_nacimiento'] = $fecha_nacimiento;
+        $_SESSION['celular'] = $celular;
+        $_SESSION['fijo'] = $fijo;
+        $_SESSION['sexo'] = $sexo;        
+    } else {
+        $response["status"] = "error";
+        $response["message"] = "Ocurrio un error intentalo mas tarde. $nombre, $apellido_paterno, $apellido_materno, $fecha_nacimiento, $celular, $fijo, $sexo, $actualizar";
+        echoResponse(200, $response);        
     }
-    $_SESSION['nombre'] = $nombre;
-    $_SESSION['apellido_paterno'] = $apellido_paterno;
-    $_SESSION['apellido_materno'] = $apellido_materno;
-    $_SESSION['fecha_nacimiento'] = $fecha_nacimiento;
-    $_SESSION['celular'] = $celular;
-    $_SESSION['fijo'] = $fijo;
-    $_SESSION['sexo'] = $sexo;
 });
+//Datos adicionales
+$app->post('/datosAdicionales', function() use ($app){
+    $response = array();
+    $r = json_decode($app->request->getBody());
+    $db = new DbHandler();
+    //Actualizar en base a los datos enviados
+    //Session para pedir el mail
+    $session = $db->getSession();
+    $email = $session['email'];
+    //Datos adicionales del json
+    $calle=$r->customer->calle;
+    $ciudad=$r->customer->ciudad;
+    $colonia=$r->customer->colonia;
+    $facebook=$r->customer->facebook;
+    $twitter=$r->customer->twitter;
+    $instagram=$r->customer->instagram;
+    //Actualizar db
+    
+    $actualizar = $db->updateValidar("update abonados_test set calle='$calle', ciudad='$ciudad', colonia='$colonia', facebook='$facebook', twitter='$twitter', instagram='$instagram' where email='$email'"); 
+    
+    //meterlos en la session
+    //Si no se actualiza
+    if($actualizar){
+        //meterlos en la session
+
+        $response["status"] = "success";
+        $response["message"] = "Datos actualizados con exito.";
+        echoResponse(200, $response);
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+        $_SESSION['calle'] = $calle;
+        $_SESSION['ciudad'] = $ciudad;
+        $_SESSION['colonia'] = $colonia;
+        $_SESSION['facebook'] = $facebook;
+        $_SESSION['twitter'] = $twitter;
+        $_SESSION['instagram'] = $instagram;        
+    } else {
+        $response["status"] = "error";
+        $response["message"] = "Ocurrio un error intentalo mas tarde.";
+        echoResponse(200, $response);       
+    }
+});    
 //Registro de nuevos abonos
 /**/
 $app->post('/abonoRegistro', function() use ($app) {

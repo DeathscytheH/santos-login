@@ -8,31 +8,31 @@
             <table class="table table-striped">
                 <tr>
                     <th>Direccion (Calle y numero)</th>
-                    <td><a href="#" editable-text="calle">{{calle || 'Vacio'}}</a></td>
+                    <td><a href="#" editable-text="datos_adicionales.calle">{{ datos_adicionales.calle || 'Vacio' }}</a></td>
                 </tr>               
                 <tr>
                     <th>Colonia</th>
-                    <td><a href="#" editable-text="colonia">{{colonia || 'Vacio'}}</a></td>
+                    <td><a href="#" editable-text="datos_adicionales.colonia">{{ datos_adicionales.colonia || 'Vacio' }}</a></td>
                 </tr>               
                 <tr>
                     <th>Ciudad</th>
-                    <td><a href="#" editable-text="ciudad">{{ciudad || 'Vacio'}}</a></td>
+                    <td><a href="#" editable-text="datos_adicionales.ciudad">{{datos_adicionales.ciudad || 'Vacio' }}</a></td>
                 </tr>
                 <tr>
                     <th>Facebook</th>
-                    <td><a href="#" editable-text="facebook">{{facebook || 'Vacio'}}</a></td>
+                    <td><a href="#" editable-text="datos_adicionales.facebook">{{ datos_adicionales.facebook || 'Vacio' }}</a></td>
                 </tr>
                 <tr>
                     <th>Twitter</th>
-                    <td><a href="#" editable-text="twitter">{{twitter || 'Vacio'}}</a></td>
+                    <td><a href="#" editable-text="datos_adicionales.twitter">{{ datos_adicionales.twitter || 'Vacio' }}</a></td>
                 </tr>
                 <tr>
                     <th>Instagram</th>
-                    <td><a href="#" editable-text="instagram">{{instagram || 'Vacio'}}</a></td>
+                    <td><a href="#" editable-text="datos_adicionales.instagram">{{ datos_adicionales.instagram || 'Vacio' }}</a></td>
                 </tr>                
             </table>
         </div>
-        <a ng-click="datos_adicionales();">Actualizar</a>
-                <button class="btn btn-info" ng-click="datos_adicionales();">Actualizar</button>  
+        <a ng-click="datosAdicionales(datos_adicionales);">Actualizar</a>
+                <button class="btn btn-info" ng-click="datosAdicionales(datos_adicionales);">Actualizar</button>  
     </div>
 </div>
