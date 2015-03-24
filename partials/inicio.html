@@ -3,14 +3,16 @@
         <h4 class="header blue lighter bigger">
                             <i class="icon-coffee green"></i>
                             Bienvenido {{datos_basicos.nombre}} {{datos_basicos.apellido_paterno}}!
-                        </h4>
+                        </h4>                       
                         <a ng-click="logout();">Logout</a>
                         <button class="btn btn-danger" ng-click="logout();">Logout</button>
         <div>
             <table class="table table-striped">
                 <tr>
                     <th>Email</th>
-                    <td><a href="#" editable-email="datos_basicos.email" >{{datos_basicos.email || 'Vacio'}}</a></td>
+                    <!--
+                    <td><a href="#" editable-email="datos_basicos.email" >{{datos_basicos.email || 'Vacio'}}</a></td>-->
+                    <td>{{datos_basicos.email}}</td>
                 </tr>               
                 <tr>
                     <th>Nombre</th>

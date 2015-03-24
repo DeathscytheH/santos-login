@@ -5,6 +5,7 @@ app.controller('authCtrl', function ($scope, $rootScope, $routeParams, $location
     $scope.abono = {};
     //$rootScope.datos_adicionales ={};
     //$rootScope.datos_basicos ={};
+    /*
     $rootScope.datos_basicos = {
         email :'',
         nombre :'',
@@ -22,7 +23,7 @@ app.controller('authCtrl', function ($scope, $rootScope, $routeParams, $location
         facebook:'',
         twitter:'',
         instagram:''
-    };
+    };*/
     $scope.doLogin = function (customer) {
         Data.post('login', {
             customer: customer
@@ -56,7 +57,7 @@ app.controller('authCtrl', function ($scope, $rootScope, $routeParams, $location
         var selected = $filter('filter')($scope.genero, {
             value: $rootScope.datos_basicos.sexo
         });
-        return ($rootScope.datos_basicos.sexo && selected.length) ? selected[0].text : 'Not set';
+        return ($rootScope.datos_basicos.sexo && selected.length) ? selected[0].text : 'Seleccion';
     };
     $scope.signUp = function (customer) {
         Data.post('signUp', {

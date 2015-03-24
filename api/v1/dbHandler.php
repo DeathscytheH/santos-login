@@ -68,26 +68,25 @@ public function getSession(){
         $sess["email"] = $_SESSION['email'];
         //Datos de abonos
         $sess['abonos'] = $_SESSION['abonos'];
-        try{
-            //Datos basicos
-            $sess["nombre"] = $_SESSION['nombre'];
-            $sess["apellido_paterno"] = $_SESSION['apellido_paterno'];
-            $sess["apellido_materno"] = $_SESSION['apellido_materno'];
-            $sess["fecha_nacimiento"] = $_SESSION['fecha_nacimiento'];
-            $sess["celular"] = $_SESSION['celular'];
-            $sess["fijo"] = $_SESSION['fijo'];
-            $sess["sexo"] = $_SESSION['sexo']; 
-            //Datos adicionales
-            $sess["calle"] = $_SESSION['calle'];
-            $sess["colonia"] = $_SESSION['colonia'];
-            $sess["ciudad"] = $_SESSION['ciudad'];
-            $sess["facebook"] = $_SESSION['facebook'];
-            $sess["twitter"] = $_SESSION['twitter'];
-            $sess["instagram"] = $_SESSION['instagram'];
+        //try{
+        //Datos basicos
+        $sess["nombre"] = $_SESSION['nombre'];
+        $sess["apellido_paterno"] = $_SESSION['apellido_paterno'];
+        $sess["apellido_materno"] = $_SESSION['apellido_materno'];
+        $sess["fecha_nacimiento"] = $_SESSION['fecha_nacimiento'];
+        $sess["celular"] = $_SESSION['celular'];
+        $sess["fijo"] = $_SESSION['fijo'];
+        $sess["sexo"] = $_SESSION['sexo']; 
+        //Datos adicionales
+        $sess["calle"] = $_SESSION['calle'];
+        $sess["colonia"] = $_SESSION['colonia'];
+        $sess["ciudad"] = $_SESSION['ciudad'];
+        $sess["facebook"] = $_SESSION['facebook'];
+        $sess["twitter"] = $_SESSION['twitter'];
+        $sess["instagram"] = $_SESSION['instagram'];
             
-        } catch(Exception $e){
+        //} catch(Exception $e){}
             //Silenciado explicitamente
-        }
     }
     else
     {
