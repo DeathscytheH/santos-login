@@ -1,0 +1,942 @@
+/*
+Del less oficial aja...
+*/
+/*****************************
+*******  Funciones *************
+*****************************/
+/*****************************
+*******  Limpiar *************
+*****************************/
+* {
+  padding: 0px;
+  margin: 0px;
+}
+a img {
+    border: 0px;
+}
+a {
+  text-decoration: none;
+}
+.both {
+  clear: both;
+  display: block;
+}
+.tinymce {
+  padding: 10px 10px;
+}
+.tinymce h3 {
+  color: #006953;
+  padding: 9px 5px 8px;
+  font-family: 'Lato', sans-serif;
+  font-size: 25px;
+  line-height: normal;
+  font-weight: 700 !important;
+}
+.tinymce h4 {
+  color: #008066;
+  padding: 9px 5px 0px;
+  font-family: 'Lato', sans-serif;
+  font-size: 18px;
+  line-height: normal;
+  font-weight: 700 !important;
+}
+.tinymce p {
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  line-height: normal;
+  font-weight: 400 !important;
+  padding: 10px 5px;
+}
+.tinymce strong,
+.tinymce a {
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  line-height: normal;
+  font-weight: 700 !important;
+  color: #008066;
+}
+.tinymce a {
+  text-decoration: underline;
+}
+.tinymce li {
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  line-height: normal;
+  font-weight: 400 !important;
+}
+.tinymce ul {
+  list-style: disc;
+  list-style-position: inside;
+  padding-left: 10px;
+}
+.tinymce ol {
+  list-style: decimal;
+  list-style-position: inside;
+  padding-left: 10px;
+}
+.tinymce img {
+  max-width: 100%;
+}
+.tinymce hr {
+  background-color: #ccc;
+  color: #ccc;
+  height: 1px;
+  border: 0px;
+}
+.tinymce table th {
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  line-height: normal;
+  font-weight: 700 !important;
+  color: #008066;
+  text-align: left;
+}
+.tinymce table td {
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  line-height: normal;
+  font-weight: 400 !important;
+}
+/*****************************
+*******  Marquetado **********
+*****************************/
+.sitio {
+  background: #ffffff url(http://clubsantos.mx/images/fondos/bg_pared.jpg) no-repeat fixed 50% 0%;
+}
+#pag {
+  background: transparent url(http://clubsantos.mx/images/fondos/patern.png) repeat-y 50% 0px;
+}
+#pag .fondo {
+  width: 960px;
+  margin: auto;
+  min-height: 500px;
+}
+#pag #cabecera {
+  background: #202020 url(http://clubsantos.mx/images/cabecera/fondoCabecera.jpg) no-repeat 0px 0px;
+  height: 130px;
+}
+#pag #cabecera h1 {
+  padding: 8px 17px 0px;
+  float: left;
+}
+#pag #cabecera .elementos {
+  float: right;
+  padding-top: 1px;
+    list-style: none;
+}
+#pag #cabecera .elementos li {
+  float: left;
+  padding-right: 10px;
+}
+#pag #cabecera .elementos li .terra {
+  display: block;
+  margin-bottom: 4px;
+}
+#pag #cabecera .elementos li.patrocinadores {
+  padding-top: 40px;
+    list-style: none;
+}
+#pag #cabecera .elementos li.patrocinadores ol li {
+  float: left;
+  padding-right: 0px;
+}
+#pag #menu #menuTop,
+#pag #menu #menuBottom {
+  padding: 0px 10px;
+}
+#pag #menu #menuTop ol li,
+#pag #menu #menuBottom ol li {
+  float: left;
+}
+#pag #menu #menuTop ol li a,
+#pag #menu #menuBottom ol li a {
+  font-family: 'Lato', sans-serif;
+  font-size: 13px;
+  line-height: normal;
+  font-weight: 700 !important;
+  display: block;
+  padding-right: 8px;
+  text-transform: uppercase;
+}
+#pag #menu #menuTop {
+  background: transparent url(http://clubsantos.mx/images/menu/bgVerde.jpg) repeat-x 0px 0px;
+  height: 34px;
+}
+#pag #menu #menuTop ol li a {
+  color: #008066;
+  line-height: 34px;
+  padding-right: 14px;
+  margin-right: 18px;
+}
+#pag #menu #menuTop .op,
+#pag #menu #menuTop .redes {
+  float: right;
+    
+}
+#pag #menu #menuTop .op a,
+#pag #menu #menuTop .redes a {
+  background-image: none;
+  padding-right: 0px;
+}
+#pag #menu #menuTop .redes {
+  float: right;
+  margin-right: 10px;
+  margin-top: 5px;
+    list-style: none;
+}
+#pag #menu #menuBottom {
+  background: transparent url(http://clubsantos.mx/images/menu/bgGris.jpg) repeat-x 0px 0px;
+  height: 42px;
+}
+#pag #menu #menuBottom ol li a {
+  color: #aeaeae;
+  line-height: 42px;
+  padding-right: 12px;
+  margin-right: 5px;
+  font-size: 12px;
+}
+#pag .cont_info {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+#pag .bannersFoot ol {
+  background-image: none;
+}
+#pag #foot {
+  background: #0b0b0b;
+  padding: 20px 0px 10px;
+}
+#pag #foot .terraLeader {
+  width: 728px;
+  margin: auto;
+  padding: 0px 0px 20px;
+}
+#pag #foot .listPatrcinadores {
+  background-color: #000;
+  padding: 10px 5px;
+  text-align: center;
+}
+#pag #foot .listPatrcinadores ol {
+  display: table;
+  width: 100%;
+}
+#pag #foot .listPatrcinadores ol li {
+  display: table-cell;
+  text-align: center;
+}
+#pag #foot .listPatrcinadores ol li img {
+  max-width: 100%;
+  display: block;
+  margin: auto;
+}
+#pag #foot .derechos {
+  margin-top: 40px;
+  border: 1px solid #414141;
+  padding: 15px 0px;
+}
+#pag #foot .derechos p {
+  color: #fff;
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+  font-size: 13px;
+  line-height: normal;
+  font-weight: 700 !important;
+}
+#pag #foot .derechos p strong,
+#pag #foot .derechos p a {
+  color: #008066;
+  padding: 0px 5px;
+}
+#pag #foot .powerby {
+  text-align: center;
+  padding-top: 8px;
+}
+#pag #foot .powerby a {
+  color: #fff;
+  font-family: 'Lato', sans-serif;
+  font-size: 10px;
+  line-height: normal;
+  font-weight: 700 !important;
+}
+#pag.home #slideHome {
+  position: relative;
+  max-height: 400px;
+  overflow: hidden;
+}
+#pag.home #slideHome .titulo {
+  display: block;
+  position: absolute;
+  bottom: 0px;
+  background: transparent url(http://clubsantos.mx/images/slide/fondo.png) no-repeat 100% 100%;
+  height: 65px;
+  padding: 25px 35px 0px 	31px;
+  color: #fff;
+  max-width: 500px;
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
+  line-height: normal;
+  font-weight: 700 !important;
+}
+#pag.home #slideHome img {
+  display: block;
+  max-width: 100%;
+}
+#pag.home #slideHome .flex-direction-nav {
+  display: none;
+}
+#pag.home #slideHome .flex-control-nav {
+  text-align: right;
+  bottom: 8px;
+}
+#pag.home #slideHome .flex-control-nav li a {
+  text-indent: -99999px;
+  overflow: hidden;
+  text-align: left;
+  width: 24px;
+  height: 22px;
+  background: transparent url(http://clubsantos.mx/images/slide/circulo.png) no-repeat 0px 0px;
+}
+#pag.home #slideHome .flex-control-nav li a.flex-active {
+  background: transparent url(http://clubsantos.mx/images/slide/circulo_hit.png) no-repeat 0px 0px;
+}
+#pag.home .slideBanner {
+  width: 960px;
+  position: relatvie;
+}
+#pag.home .slideBanner li a img {
+  display: block;
+}
+#pag.home .slideBanner .flex-direction-nav {
+  display: none;
+}
+#pag.home .slideBanner .flex-control-nav {
+  text-align: center;
+  width: 960px;
+  bottom: 67px;
+}
+#pag.home .slideBanner .flex-control-nav li a {
+  text-indent: -99999px;
+  overflow: hidden;
+  text-align: left;
+  width: 24px;
+  height: 22px;
+  display: none;
+  background: transparent url(http://clubsantos.mx/images/slide/circulo.png) no-repeat 0px 0px;
+}
+#pag.home .slideBanner .flex-control-nav li a.flex-active {
+  background: transparent url(http://clubsantos.mx/images/slide/circulo_hit.png) no-repeat 0px 0px;
+}
+#pag.home #redesColumnas {
+  padding-bottom: 0px;
+}
+#pag.home .bannersFoot {
+  padding-top: 0px;
+}
+#pag.home .listBanners {
+  overflow: hidden;
+  background-color: #006953;
+  padding: 20px 0px;
+}
+#pag.home .listBanners .bannUltimoPardio {
+  float: left;
+  width: 190px;
+  text-align: center;
+}
+#pag.home .listBanners .bannUltimoPardio .banner {
+  padding-top: 8px;
+  width: 171px;
+  margin: auto;
+  height: 474px;
+  background: transparent url(http://clubsantos.mx/images/home/bgBannerBig.png) no-repeat 0px 0px;
+}
+#pag.home .listBanners .bannUltimoPardio .banner h3 {
+  padding: 10px 5px 0px;
+  font-family: 'Lato', sans-serif;
+  font-size: 25px;
+  line-height: normal;
+  font-weight: 700 !important;
+  color: #008066;
+  text-transform: uppercase;
+}
+#pag.home .listBanners .bannUltimoPardio .banner h4 {
+  color: #006953;
+  text-transform: uppercase;
+  font-family: 'Lato', sans-serif;
+  font-size: 13px;
+  line-height: normal;
+  font-weight: 400 !important;
+}
+#pag.home .listBanners .bannUltimoPardio .banner img {
+  padding-bottom: 5px;
+}
+#pag.home .listBanners .bannUltimoPardio .banner p {
+  text-align: center;
+  color: #aeaeae;
+  text-transform: uppercase;
+  font-family: 'Lato', sans-serif;
+  font-size: 18px;
+  line-height: normal;
+  font-weight: 400 !important;
+  padding-top: 20px;
+}
+#pag.home .listBanners .bannUltimoPardio .banner p strong {
+  font-size: 23px;
+}
+#pag.home .listBanners .bannUltimoPardio .banner p .vs {
+  display: block;
+  font-family: 'Lato', sans-serif;
+  font-size: 18px;
+  line-height: normal;
+  font-weight: 700 !important;
+  padding: 10px 0px;
+}
+#pag.home .listBanners .bannListado {
+  float: left;
+  width: 770px;
+}
+#pag.home .listBanners .bannListado .terraLeader {
+  width: 728px;
+  margin: auto;
+  padding: 0px 0px 10px;
+}
+#pag.home .listBanners .bannListado .listado {
+  padding: 0px 7px;
+  overflow: hidden;
+  background: transparent url(http://clubsantos.mx/images/home/linea_horizon.gif) no-repeat 13px 183px;
+}
+#pag.home .listBanners .bannListado .listado li {
+  float: left;
+  padding: 3px 10px;
+  background: transparent url(http://clubsantos.mx/images/home/linea_vertical.gif) no-repeat 100% 50%;
+}
+#pag.home .listBanners .bannListado .listado li:nth-child(4n+0) {
+  background: none;
+}
+#pag.home .listBanners .bannListado .listado li a {
+  display: block;
+  width: 165px;
+  height: 180px;
+  background: transparent url(http://clubsantos.mx/images/home/bgBannerBoxito.png) no-repeat 0px 0px;
+  padding: 3px 2px;
+}
+#redesColumnas,
+.bannersFoot {
+  background: #1f1f20 url(http://clubsantos.mx/images/home/bgRayas.png) repeat 0px 0px;
+  padding: 38px 11px 22px;
+  overflow: hidden;
+}
+#redesColumnas > ol,
+.bannersFoot > ol {
+  background: transparent url(http://clubsantos.mx/images/home/lineas_sep.png) no-repeat -30px -37px;
+  overflow: hidden;
+}
+#redesColumnas > ol > li,
+.bannersFoot > ol > li {
+  float: left;
+  width: 450px;
+}
+#redesColumnas .columna1,
+.bannersFoot .columna1 {
+  margin-right: 31px;
+}
+#redesColumnas .columna1.youtube,
+.bannersFoot .columna1.youtube {
+  padding: 0px 0px 18px;
+  position: relative;
+}
+#redesColumnas .columna1.youtube img,
+.bannersFoot .columna1.youtube img {
+  max-width: 100%;
+}
+#redesColumnas .columna1.youtube #slideHomeYoutube,
+.bannersFoot .columna1.youtube #slideHomeYoutube {
+  padding: 10px 15px 10px 25px;
+}
+#redesColumnas .columna1.youtube .flex-control-nav,
+.bannersFoot .columna1.youtube .flex-control-nav {
+  display: none;
+}
+#redesColumnas .columna1.youtube .flex-direction-nav .flex-next,
+.bannersFoot .columna1.youtube .flex-direction-nav .flex-next,
+#redesColumnas .columna1.youtube .flex-direction-nav .flex-prev,
+.bannersFoot .columna1.youtube .flex-direction-nav .flex-prev {
+  top: auto;
+  bottom: 64px;
+  opacity: 1;
+  width: 19px;
+  height: 30px;
+}
+#redesColumnas .columna1.youtube .flex-direction-nav .flex-next,
+.bannersFoot .columna1.youtube .flex-direction-nav .flex-next {
+  background: transparent url(http://clubsantos.mx/images/home/flecha_right.png) no-repeat 0px 0px;
+  right: -11px;
+}
+#redesColumnas .columna1.youtube .flex-direction-nav .flex-prev,
+.bannersFoot .columna1.youtube .flex-direction-nav .flex-prev {
+  background: transparent url(http://clubsantos.mx/images/home/flecha_left.png) no-repeat 0px 0px;
+  left: 2px;
+}
+#redesColumnas .columna1 .facebook,
+.bannersFoot .columna1 .facebook {
+  margin-top: 30px;
+  background-color: #fff;
+  float: right;
+}
+#redesColumnas .columna2 .recuadro_redes,
+.bannersFoot .columna2 .recuadro_redes {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  background: #f0f0f0 url(http://clubsantos.mx/images/home/bgFacebook.png) no-repeat 0px 0px;
+  padding: 5px 10px 30px;
+}
+#redesColumnas .columna2 .recuadro_redes .facebook,
+.bannersFoot .columna2 .recuadro_redes .facebook {
+  padding: 2px 0px 15px;
+}
+#redesColumnas .columna2.terraBox,
+.bannersFoot .columna2.terraBox {
+  margin-top: 30px;
+}
+#pag.contenidos .cont_info.no-border .tinymce {
+  padding: 0px;
+}
+#pag.contenidos .cont_info.no-border .tinymce h3,
+#pag.contenidos .cont_info.no-border .tinymce h4,
+#pag.contenidos .cont_info.no-border .tinymce p {
+  padding-left: 17px;
+  padding-right: 17px;
+}
+#pag.contenidos .cont_info.no-border .tinymce .no-bordes {
+  padding: 0px;
+  clear: both;
+}
+#pag.contenidos .cont_info.no-border .tinymce .no-bordes img {
+  display: block;
+  float: left;
+}
+#pag.contenidos #poll {
+  max-width: 450px;
+  margin: auto;
+  padding-bottom: 100px;
+  overflow: hidden;
+}
+#pag.wallpapers .cont_info,
+#pag.fotogalerias .cont_info {
+  padding: 20px 20px;
+}
+#pag.wallpapers .cont_info h2,
+#pag.fotogalerias .cont_info h2 {
+  padding: 10px 5px 20px;
+  font-family: 'Lato', sans-serif;
+  font-size: 25px;
+  line-height: normal;
+  font-weight: 700 !important;
+  color: #008066;
+  text-transform: uppercase;
+}
+#pag.wallpapers .cont_info h3,
+#pag.fotogalerias .cont_info h3 {
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  line-height: normal;
+  font-weight: 400 !important;
+  text-align: center;
+  padding: 5px 0px 5px;
+  letter-spacing: 1;
+}
+#pag.wallpapers .cont_info > ol,
+#pag.fotogalerias .cont_info > ol {
+  padding: 10px 0px;
+  overflow: hidden;
+}
+#pag.wallpapers .cont_info > ol > li,
+#pag.fotogalerias .cont_info > ol > li {
+  float: left;
+  width: 21%;
+  margin: 2px 2% 14px;
+}
+#pag.wallpapers .cont_info > ol > li img,
+#pag.fotogalerias .cont_info > ol > li img {
+  max-width: 100%;
+}
+#pag.wallpapers .cont_info > ol > li .resoluciones,
+#pag.fotogalerias .cont_info > ol > li .resoluciones {
+  display: table;
+  width: 100%;
+}
+#pag.wallpapers .cont_info > ol > li .resoluciones li,
+#pag.fotogalerias .cont_info > ol > li .resoluciones li {
+  text-align: center;
+  display: table-cell;
+}
+#pag.wallpapers .cont_info > ol > li .resoluciones li a,
+#pag.fotogalerias .cont_info > ol > li .resoluciones li a {
+  font-family: 'Lato', sans-serif;
+  font-size: 12px;
+  line-height: normal;
+  font-weight: 700 !important;
+  color: #008066;
+  text-decoration: underline;
+}
+#pag.fotogalerias .cont_info .listado a {
+  display: block;
+  color: #000;
+}
+#poll {
+  margin: 0px 0px 30px;
+}
+#poll .piechart {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  padding: 4px;
+  background-color: #fff;
+}
+#poll h4 {
+  color: #008066;
+  font-family: 'Lato', sans-serif;
+  font-size: 20px;
+  line-height: normal;
+  font-weight: 700 !important;
+  padding: 0px 0px 20px;
+}
+#poll ol {
+  background-color: #494949;
+  overflow: hidden;
+  padding: 5px 15px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-box-shadow: inset 4px 5px 14px 0px rgba(50, 50, 50, 0.75);
+  -moz-box-shadow: inset 4px 5px 14px 0px rgba(50, 50, 50, 0.75);
+  box-shadow: inset 4px 5px 14px 0px rgba(50, 50, 50, 0.75);
+}
+#poll ol li {
+  padding: 5px 0px;
+}
+#poll ol li label {
+  color: #fff;
+  padding-left: 10px;
+  font-family: 'Lato', sans-serif;
+  font-size: 12px;
+  line-height: normal;
+  font-weight: 400 !important;
+}
+#poll .submit {
+  margin-top: 10px;
+  float: right;
+  color: #fff;
+  background-color: #008066;
+  padding: 10px 15px;
+  border: 0px;
+  cursor: pointer;
+}
+#pag.noticias .cont_info,
+#pag.estadisticas .cont_info {
+  background: #ededed url(http://clubsantos.mx/images/noticiasbg.gif) repeat 0px 0px;
+  padding-bottom: 20px;
+}
+#pag.noticias .cont_info h2,
+#pag.estadisticas .cont_info h2 {
+  color: #006953;
+  margin-left: 15px;
+  padding: 9px 15px 15px 0px;
+  margn-bottom: 18px;
+  font-family: 'Lato', sans-serif;
+  font-size: 28px;
+  line-height: normal;
+  font-weight: 700 !important;
+  background: #ededed url(http://clubsantos.mx/images/noticias/line.gif) no-repeat 0% 100%;
+}
+#pag.noticias .cont_info p,
+#pag.estadisticas .cont_info p {
+  color: #454545;
+}
+#pag.noticias .cont_info .date,
+#pag.estadisticas .cont_info .date {
+  padding: 10px;
+  text-align: right;
+  text-decoration: underline;
+  font-family: 'Lato', sans-serif;
+  font-size: 13px;
+  line-height: normal;
+  font-weight: 400 !important;
+}
+#pag.noticias .cont_info .AddThis,
+#pag.estadisticas .cont_info .AddThis {
+  border: 1px solid #d3d3d3;
+  border-left: 0px;
+  border-right: 0px;
+  padding: 10px;
+}
+#pag.noticias .cont_info .lista,
+#pag.estadisticas .cont_info .lista {
+  padding: 10px 10px;
+}
+#pag.noticias .cont_info .lista a,
+#pag.estadisticas .cont_info .lista a {
+  color: #000000;
+}
+#pag.noticias .cont_info .lista .titulo,
+#pag.estadisticas .cont_info .lista .titulo {
+  font-family: 'Lato', sans-serif;
+  font-size: 17px;
+  line-height: normal;
+  font-weight: 700 !important;
+  color: #008066;
+  display: block;
+  padding-top: 10px;
+  padding-bottom: 5px;
+}
+#pag.noticias .cont_info .lista .alt,
+#pag.estadisticas .cont_info .lista .alt {
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  line-height: normal;
+  font-weight: 400 !important;
+}
+#pag.noticias .cont_info .lista img,
+#pag.estadisticas .cont_info .lista img {
+  max-width: 200px;
+  float: left;
+  padding: 5px 10px 5px 5px;
+}
+#pag.plantel .cont_info {
+  background: #ededed url(http://clubsantos.mx/images/noticiasbg.gif) repeat 0px 0px;
+}
+#pag.plantel .cont_info h2 {
+  color: #006953;
+  margin-left: 15px;
+  padding: 9px 15px 15px 0px;
+  margin-bottom: 18px;
+  text-transform: uppercase;
+  font-family: 'Lato', sans-serif;
+  font-size: 28px;
+  line-height: normal;
+  font-weight: 700 !important;
+  background: transparent url(http://clubsantos.mx/images/noticias/line.gif) no-repeat 0% 100%;
+}
+#pag.plantel .cont_info h2.line {
+  background: transparent url(http://clubsantos.mx/images/jugadores/line_sep.png) no-repeat 100% 50%;
+  margin-bottom: 3px;
+  padding-left: 4px;
+}
+#pag.plantel .cont_info .categorias {
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+#pag.plantel .cont_info .categorias li {
+  float: left;
+}
+#pag.plantel .cont_info .listJugadores {
+  padding: 0px 17px 9px;
+  overflow: hidden;
+  background: transparent url(http://clubsantos.mx/images/jugadores/line_sep_large) no-repeat 50% 100%;
+}
+#pag.plantel .cont_info .listJugadores li {
+  float: left;
+}
+#pag.plantel .cont_info .listJugadores li a {
+  background: url(http://clubsantos.mx/images/jugadores/bgJugadorC.png) no-repeat 0px -1px;
+  display: block;
+  width: 102px;
+  height: 102px;
+  padding: 3px 7px 12px 3px;
+}
+#pag.plantel .cont_info .perfil {
+  background: transparent url(http://clubsantos.mx/images/jugadores/line_sep_large) no-repeat 50% 100%;
+  padding: 10px 7px;
+  overflow: hidden;
+}
+#pag.plantel .cont_info .perfil .imagen {
+  width: 230px;
+  height: 340px;
+  padding: 3px 11px 13px 9px;
+  margin: 10px 5px;
+  background: url(http://clubsantos.mx/images/jugadores/bgJugadorG.png) no-repeat 0px -1px;
+  display: block;
+  float: left;
+}
+#pag.plantel .cont_info .perfil .info {
+  width: 660px;
+  display: block;
+  float: left;
+  padding: 10px 10px 10px;
+  color: #3e3d40;
+  font-family: 'Lato', sans-serif;
+  font-size: 15px;
+  line-height: normal;
+  font-weight: 400 !important;
+}
+#pag.plantel .cont_info .perfil .info strong {
+  display: block;
+  float: left;
+  text-align: right;
+  padding-right: 10px;
+  font-family: 'Lato', sans-serif;
+  font-size: 15px;
+  line-height: normal;
+  font-weight: 700 !important;
+  color: #006953;
+  padding-bottom: 2px;
+}
+#pag.plantel .cont_info .perfil .info br {
+  clear: both;
+}
+#pag.estadisticas .cont_info {
+  padding-bottom: 30px;
+}
+#pag.estadisticas table.estadisticas {
+  width: 100%;
+  max-width: 700px;
+  margin: 25px auto 0px;
+}
+#pag.estadisticas table.estadisticas caption {
+  font-family: 'Lato', sans-serif;
+  font-size: 20px;
+  line-height: normal;
+  font-weight: 700 !important;
+  padding-bottom: 10px;
+}
+#pag.estadisticas table.estadisticas thead th {
+  text-transform: uppercase;
+  color: #008066;
+  padding-bottom: 5px;
+  font-family: 'Lato', sans-serif;
+  font-size: 15px;
+  line-height: normal;
+  font-weight: 700 !important;
+  border-right: 1px solid #cacaca;
+}
+#pag.estadisticas table.estadisticas thead th.nombre {
+  text-align: left;
+  padding-left: 10px;
+}
+#pag.estadisticas table.estadisticas tbody td {
+  text-align: center;
+  border: 1px solid #cacaca;
+  padding: 5px 14px;
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  line-height: normal;
+  font-weight: 400 !important;
+  line-height: 33px;
+}
+#pag.estadisticas table.estadisticas tbody td.hit {
+  background-color: #d5e6e0;
+}
+#pag.estadisticas table.estadisticas tbody td.logo {
+  border-right: 0px;
+}
+#pag.estadisticas table.estadisticas tbody td.nombre {
+  text-align: left;
+  color: #757575;
+}
+#pag.estadisticas table.estadisticas tbody td.estadio {
+  color: #757575;
+}
+#pag.estadisticas table.estadisticas tbody td.fechaShort {
+  border-top: 1px solid #cacaca !important;
+}
+#pag.estadisticas table.estadisticas td.numero,
+#pag.estadisticas table.estadisticas th.numero,
+#pag.estadisticas table.estadisticas td.fechaShort,
+#pag.estadisticas table.estadisticas th.fechaShort {
+  border-left: 0px;
+  border-top: 0px;
+  border-bottom: 0px;
+}
+#pag.estadisticas table.estadisticas td.local,
+#pag.estadisticas table.estadisticas th.local {
+  text-align: right;
+  border-right: 0px;
+}
+#pag.estadisticas table.estadisticas td.goles,
+#pag.estadisticas table.estadisticas th.goles {
+  border-left: 0px;
+  border-right: 0px;
+}
+#pag.estadisticas table.estadisticas td.visitante,
+#pag.estadisticas table.estadisticas th.visitante {
+  text-align: left;
+  border-left: 0px;
+}
+#pag.estadisticas table.estadisticas td img,
+#pag.estadisticas table.estadisticas th img {
+  max-height: 33px;
+  vertical-align: middle;
+}
+#pag.estadisticas table.estadisticas th.visitante {
+  padding-left: 14px;
+}
+#pag.estadisticas table.estadisticas th.local {
+  padding-right: 14px;
+}
+#pag.estadisticas .simbologia {
+  overflow: hidden;
+  padding-top: 50px;
+  padding-left: 50px;
+}
+#pag.estadisticas .simbologia ol {
+  list-style: none;
+  width: 310px;
+}
+#pag.estadisticas .simbologia ol li {
+  float: left;
+  width: 50%;
+}
+#pag.estadisticas #dropdownTorenos {
+  padding: 17px 15px 0px;
+}
+#pag.estadisticas #dropdownTorenos ol li {
+  float: left;
+  padding-right: 10px;
+}
+#pag.estadisticas #dropdownTorenos ol li select,
+#pag.estadisticas #dropdownTorenos ol li input {
+  background-color: #008066;
+  color: #fff;
+  border: 0px;
+  height: 24px;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  border-radius: 7px;
+}
+#pag.estadisticas #dropdownTorenos ol li input {
+  padding: 0px 15px;
+  cursor: pointer;
+  background: #006953;
+}
+#clock {
+  position: relative;
+  width: 94px;
+  height: 94px;
+  margin-left: 16px;
+  background: url(http://clubsantos.mx/images/clock/clockface.png);
+  list-style: none;
+}
+#clock #sec,
+#clock #min,
+#clock #hour {
+  position: absolute;
+  width: 11px;
+  height: 94px;
+  top: 0px;
+  left: 43px;
+  padding: 0px !important;
+}
+#clock #sec {
+  z-index: 3;
+}
+#clock #min {
+  background: url(http://clubsantos.mx/images/clock/minhand.png) no-repeat;
+  z-index: 2;
+}
+#clock #hour {
+  background: url(http://clubsantos.mx/images/clock/hourhand.png) no-repeat;
+  z-index: 1;
+}
+
+.pp {
+    list-style: none;
+}
